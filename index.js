@@ -1,6 +1,6 @@
 'use strict'
 
-const token = 'EAADLvncZBK9QBADUTXvZCEnObkfW448G9kVY5issX67OaYyLzdgaZBUOKDZAJEZBe6BiD2ZCWgDDsXJMf6KIM2ajaUMpQzwDUZB6OBkhYrkg7hPVP7q0FX4EkYZBPnGxytxyasvFfireMblKhRX2SpFYi3t3BGXwAZC2udPe020DxmAZDZD'
+const token = 'EAADLvncZBK9QBAPZB0RjJjah6mzHXAnUkV9Vo9pTR6cVtvDVbf0vwaeEab8Y9fl0fjdirzue9kZAt5g8kKU0M9SYTb6yWdyZB4FHBTso6jwoZBhqIUzqmOVTszfLoscEpn59vQ9lwEgEEipMdyXT1ZAL9QkKLqH1rZBdrCBPZAePiwZDZD'
 const vtoken = process.env.FB_VERIFY_ACCESS_TOKEN
 
 const express = require('express')
