@@ -27,7 +27,7 @@ app.get('/webhook/', function (req, res) {
         res.send(req.query['hub.challenge'])
     }
     // res.send('No sir')
-	res.send(token)
+	res.send('token='+token+'vtoken:'+vtoken)
 })
 
 // Spin up the server
