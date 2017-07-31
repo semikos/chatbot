@@ -40,10 +40,13 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
       let event = req.body.entry[0].messaging[i]
       let sender = event.sender.id
+	  
       if (event.message && event.message.text) {
+		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
             sendGenericMessage(sender)
+			 console.log('message sent')
             continue
         }
         sendTextMessage(sender, "Message received: " + text.substring(0, 200))
