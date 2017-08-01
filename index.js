@@ -46,11 +46,11 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
-            sendMessage(sender, "!! " +event, token)
+            sendApiMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
-        sendMessage(sender, "!! " +event, token)
+        sendApiMessage(sender, "!! " +event, token)
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
@@ -133,6 +133,8 @@ function sendGenericMessage(sender) {
 
 //Send message using API.AI
 function sendApiMessage(event) {
+  
+  
   let sender = event.sender.id;
   let text = event.message.text;
 
