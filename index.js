@@ -50,7 +50,9 @@ app.post('/webhook/', function (req, res) {
 			 console.log('message sent')
             continue
         }
-        sendApiMessage(event)
+        console.log('message sent before sendApiMessage')
+		sendApiMessage(event)
+		console.log('message sent after sendApiMessage')
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
@@ -134,12 +136,13 @@ function sendGenericMessage(sender) {
 //Send message using API.AI
 function sendApiMessage(event) {
   
-  
+  console.log('inside method')
   let sender = event.sender.id;
   let text = event.message.text;
 
   let apiai = apiaiApp.textRequest(text, {
     sessionId: vtoken // use any arbitrary id
+	console.log(sessionId)
   });
 
     apiai.on('response', (response) => {
@@ -160,6 +163,7 @@ function sendApiMessage(event) {
           console.log('Error: ', response.body.error);
       }
     });
+	console.log(aiText)
  });
 
   apiai.on('error', (error) => {
