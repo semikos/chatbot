@@ -3,6 +3,7 @@
 const token = 'EAADLvncZBK9QBADNi2GIGRGxyDJy7PKRuJZBz7R19oGlzzQDZAYD0kkJXzpU6ZCrZBaKT6OsX0AknhWL1J3QuMmCfhLZATfoPFeZAgIzWTJ3adXwZCP0tXnZAf0PvhOulB1qD9beUPrRm75MAoOuGOUNQreZASdJEThIZAEfgKLNFcIZAQZDZD'
 const vtoken = process.env.FB_VERIFY_ACCESS_TOKEN
 
+const apiai = require('apiai')(CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -45,11 +46,11 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
-            sendGenericMessage(sender)
+            sendApiMessage(event)
 			 console.log('message sent')
             continue
         }
-        sendTextMessage(sender, "Message received: " + text.substring(0, 200))
+        sendApiMessage(event)
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
@@ -128,3 +129,41 @@ function sendGenericMessage(sender) {
         }
     })
 }
+
+
+//Send message using API.AI
+function sendApiMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
+
+  let apiai = apiaiApp.textRequest(text, {
+    sessionId: 'tabby_cat' // use any arbitrary id
+  });
+
+    apiai.on('response', (response) => {
+  let aiText = response.result.fulfillment.speech;
+
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: {access_token: PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+        recipient: {id: sender},
+        message: {text: aiText}
+      }
+    }, (error, response) => {
+      if (error) {
+          console.log('Error sending message: ', error);
+      } else if (response.body.error) {
+          console.log('Error: ', response.body.error);
+      }
+    });
+ });
+
+  apiai.on('error', (error) => {
+    console.log(error);
+  });
+
+  apiai.end();
+}
+
