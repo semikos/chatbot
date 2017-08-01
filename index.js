@@ -145,7 +145,7 @@ function sendApiMessage(event) {
 
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: EAADLvncZBK9QBADNi2GIGRGxyDJy7PKRuJZBz7R19oGlzzQDZAYD0kkJXzpU6ZCrZBaKT6OsX0AknhWL1J3QuMmCfhLZATfoPFeZAgIzWTJ3adXwZCP0tXnZAf0PvhOulB1qD9beUPrRm75MAoOuGOUNQreZASdJEThIZAEfgKLNFcIZAQZDZD},
+      qs: {access_token: 'EAADLvncZBK9QBADNi2GIGRGxyDJy7PKRuJZBz7R19oGlzzQDZAYD0kkJXzpU6ZCrZBaKT6OsX0AknhWL1J3QuMmCfhLZATfoPFeZAgIzWTJ3adXwZCP0tXnZAf0PvhOulB1qD9beUPrRm75MAoOuGOUNQreZASdJEThIZAEfgKLNFcIZAQZDZD'},
       method: 'POST',
       json: {
         recipient: {id: sender},
