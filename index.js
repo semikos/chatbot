@@ -142,7 +142,6 @@ function sendApiMessage(event) {
 
   let apiai = apiaiApp.textRequest(text, {
     sessionId: vtoken // use any arbitrary id
-	console.log(sessionId)
   });
 
     apiai.on('response', (response) => {
