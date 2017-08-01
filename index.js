@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
 			 console.log('message sent')
             continue
         }
-        sendApiMessage(sender, "!! " +event, token)
+        sendApiMessage(event)
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
