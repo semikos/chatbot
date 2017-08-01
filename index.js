@@ -46,11 +46,11 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
-            sendApiMessage(event)
+            sendApiMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
-        sendApiMessage(event)
+        sendApiMessage(sender, "!! " +event, token)
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
@@ -137,7 +137,7 @@ function sendApiMessage(event) {
   let text = event.message.text;
 
   let apiai = apiaiApp.textRequest(text, {
-    sessionId: 'tabby_cat' // use any arbitrary id
+    sessionId: vtoken // use any arbitrary id
   });
 
     apiai.on('response', (response) => {
