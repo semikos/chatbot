@@ -46,11 +46,11 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
-            sendApiMessage(sender, "!! " +event, token)
+            sendMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
-        sendApiMessage(sender, "!! " +event, token)
+        sendMessage(sender, "!! " +event, token)
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
