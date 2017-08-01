@@ -3,7 +3,7 @@
 const token = 'EAADLvncZBK9QBADNi2GIGRGxyDJy7PKRuJZBz7R19oGlzzQDZAYD0kkJXzpU6ZCrZBaKT6OsX0AknhWL1J3QuMmCfhLZATfoPFeZAgIzWTJ3adXwZCP0tXnZAf0PvhOulB1qD9beUPrRm75MAoOuGOUNQreZASdJEThIZAEfgKLNFcIZAQZDZD'
 const vtoken = process.env.FB_VERIFY_ACCESS_TOKEN
 
-const apiai = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
+const apiaiApp = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
