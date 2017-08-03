@@ -45,19 +45,19 @@ app.post('/webhook/', function (req, res) {
       if (event.message && event.message.text) {
 		  console.log('eventmessage')
         let text = event.message.text
-        if (text === 'Menu') {
+        if (text === 'Generic') {
             sendGenericMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
 		
-		/*********************************************************************************************************************************
+		/*********************************************************************************************************************************/
 		 if (text === 'Menu') {
             sendMenuMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
-		*********************************************************************************************************************************/
+		/*********************************************************************************************************************************/
 		
         console.log('message sent before sendApiMessage')
 		sendApiMessage(event)
@@ -154,8 +154,8 @@ function sendMenuMessage(sender) {
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://m.me/adecco.france",
-                        "title": "AccÃ©s"
+                        "url": "https://www.messenger.com/t/adecco.france",
+                        "title": "Accès"
                     }, {
                         "type": "postback",
                         "title": "Postback",
