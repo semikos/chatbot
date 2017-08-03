@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
       if (event.message && event.message.text) {
 		  console.log('eventmessage')
         let text = event.message.text
-        if (text === 'Generic') {
+        if (text === 'Menu') {
             sendGenericMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
