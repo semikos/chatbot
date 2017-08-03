@@ -150,7 +150,7 @@ function sendMenuMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Adecco France",
-                    "image_url":"http://rmsnews.com/wp-content/uploads/2011/11/Adecco-France-adeccofrance-sur-Twitter.png",
+                    "image_url":"https://pbs.twimg.com/media/ClfMG1HWEAAl_EM.jpg",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.messenger.com/t/adecco.france",
