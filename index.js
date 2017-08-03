@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text
         if (text === 'Generic') {
-            sendApiMessage(sender, "!! " +event, token)
+            sendGenericMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
         }
