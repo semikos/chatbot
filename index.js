@@ -157,13 +157,12 @@ function sendMenuMessage(sender) {
                         "title": "Acces"
                     }],
                 }, {
-                    "title": "4 exemples de Chatbots",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "title": "Drift BOT",
+                    "image_url": "https://i.ytimg.com/vi/AHsspE09SvU/maxresdefault.jpg",
                     "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "type": "web_url",
+                        "url": "https://www.drift.com",
+                        "title": "Acces"
                     }],
                 }]
             }
