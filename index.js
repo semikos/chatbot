@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
         }
 		
 		/*********************************************************************************************************************************/
-		 if (text === 'Menu') {
+		else if (text === 'Menu') {
             sendMenuMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
@@ -147,7 +147,7 @@ function sendMenuMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "menu",
+                "template_type": "generic",
                 "elements": [{
                     "title": "4 exemples de Chatbots",
                     "subtitle": "Chatbot 1 : Adecco France",
