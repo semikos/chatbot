@@ -26,10 +26,31 @@ app.get('/', function (req, res) {
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
+		facebookDemarre
     }
     // res.send('No sir')
 	res.send('token='+token+'vtoken:'+vtoken)
 })
+
+function facebookDemarre(){
+ // Start the request
+ request({
+     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
+     method: 'POST',
+     headers: {'Content-Type': 'application/json'},
+     form:Templates.defaulttemplates["Demarre"]
+
+ },
+ function (error, response, body) {
+     if (!error && response.statusCode == 200) {
+         // Print out the response body
+         console.log(": Updated.");
+         console.log(body);
+     } else {
+         console.log(": Failed. Need to handle errors.");
+         console.log(body);
+     }
+ });}
 
 // Spin up the server
 app.listen(app.get('port'), function() {
