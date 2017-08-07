@@ -27,6 +27,7 @@ app.get('/', function (req, res) {
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
+		sendButtonMessage(event)
     }
     // res.send('No sir')
 	res.send('token='+token+'vtoken:'+vtoken)
@@ -227,3 +228,38 @@ function sendApiMessage(event) {
   apiai.end();
 }
 
+function sendButtonMessage(sender) {
+    let messageData = {
+		"message":{
+		"text":"Pick a color:",
+		"quick_replies":[
+		  {
+			"content_type":"text",
+			"title":"Red",
+			"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+		  },
+		  {
+			"content_type":"text",
+			"title":"Green",
+			"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+		  }
+		]
+	  }
+	}
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
