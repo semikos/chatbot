@@ -31,5 +31,6 @@
     "express": "^4.14.0",
     "request": "^2.78.0",
     "apiai": "^4.0.3"
-  }
+  },
+  "devDependencies": {}
 }
