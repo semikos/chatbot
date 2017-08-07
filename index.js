@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
         }
 		
 		/*********************************************************************************************************************************/
-		else if (text === 'Menu') {
+		else if (text.ignoreCase === 'Menu') {
             sendMenuMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
