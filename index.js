@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
         }
 		
 		/*********************************************************************************************************************************/
-		else if (text.toUpperCase() === 'Menu'.toUpperCase() || text.toUpperCase().indexOf('nouveau'.toUpperCase() !== -1) {
+		else if (text.toUpperCase() === 'Menu'.toUpperCase() || text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1) {
             sendMenuMessage(sender, "!! " +event, token)
 			 console.log('message sent')
             continue
