@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
-		sendButtonMessage(event)
+		
     }
     // res.send('No sir')
 	res.send('token='+token+'vtoken:'+vtoken)
@@ -48,7 +48,7 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text 
         if (text === 'Generic') {
-            sendGenericMessage(sender, "!! " +event, token)
+            sendButtonMessage(sender,event,token)
 			 console.log('message sent')
             continue
         }
