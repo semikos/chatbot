@@ -27,7 +27,6 @@ app.get('/', function (req, res) {
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
-		
     }
     // res.send('No sir')
 	res.send('token='+token+'vtoken:'+vtoken)
@@ -37,9 +36,6 @@ app.get('/webhook/', function (req, res) {
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
-
-facebookDemarre();
-facebookMenu();
 
 app.post('/webhook/', function (req, res) {
 			
@@ -65,7 +61,7 @@ app.post('/webhook/', function (req, res) {
             continue
         }
 		/*********************************************************************************************************************************/
-		
+
 		sendApiMessage(event)
       }
       if (event.postback) {
@@ -266,7 +262,6 @@ function facebookDemarre(){
 
 
 function Demarrer(sender){
-	let sender = event.sender.id;
 	
 	let templates = {
 		"welcome_message":
