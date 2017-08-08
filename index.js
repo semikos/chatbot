@@ -53,7 +53,7 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text 
         if (text === 'Generic') {
-            sendButtonMessage(sender,event,token)
+            sendGenericMessage(sender,event,token)
 			console.log('message sent')
 			continue
         }
@@ -62,7 +62,7 @@ app.post('/webhook/', function (req, res) {
 		else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1)
 			|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
             sendMenuMessage(sender, "!! " +event, token)
-			 console.log('message sent')
+			console.log('message sent')
             continue
         }
 		
@@ -81,7 +81,7 @@ app.post('/webhook/', function (req, res) {
       }
     }
     res.sendStatus(200)
-  })
+})
 
 
 function sendTextMessage(sender, text) {
@@ -278,7 +278,3 @@ function facebookDemarre(){
      }
  });
 }
-
-
-
-
