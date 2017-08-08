@@ -284,6 +284,9 @@ function facebookDemarre(){
 
 
 function Demarrer(event){
+	let sender = event.sender.id;
+	let text = event.message.text;
+	
 let templates = {
 	// Salutation
 
@@ -311,7 +314,7 @@ let templates = {
         method: 'POST',
         json: {
             recipient: {id:sender},
-            message: messageData,
+            message: templates,
         }
     }, function(error, response, body) {
         if (error) {
