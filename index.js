@@ -7,6 +7,7 @@ const apiaiApp = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const Templates = require('./templates/template.js')
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
@@ -23,7 +24,7 @@ app.get('/', function (req, res) {
 })
 
 // for Facebook verification
-app.get('/webhook/', function (req, res) {
+app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
 		
@@ -41,7 +42,7 @@ app.listen(app.get('port'), function() {
 })
 
 
-app.post('/webhook/', function (req, res) {
+app.post('/webhook', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
       let event = req.body.entry[0].messaging[i]
