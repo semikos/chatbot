@@ -39,6 +39,7 @@ app.listen(app.get('port'), function() {
 
 facebookDemarre();
 facebookMenu();
+Demarrer();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -231,7 +232,7 @@ function facebookDemarre(){
 	 qs: {access_token: token},
      method: 'POST',
      headers: {'Content-Type': 'application/json'},
-     form:Templates.defaulttemplates["Demarre"]
+     form:Templates.defaulttemplates["Demarrer"]
 
  },
  function (error, response, body) {
@@ -252,7 +253,7 @@ function Demarrer(sender){
 	let templates = {
 		"welcome_message":
 		{
-	   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+		"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
 		"quick_replies":
 			[
 		  {

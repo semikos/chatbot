@@ -5,7 +5,7 @@ let templates = {
 
 	"welcome_message":
 	{
-   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+	"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
     "quick_replies":
 		[
       {
@@ -155,13 +155,13 @@ let templates = {
                 ]
 			}]
 	},
-	"Demarre":{
+	"Demarrer":{
 	"setting_type":"call_to_actions",
 	"thread_state":"new_thread",
 	"call_to_actions":
 	[
 		{
-			"payload":"Demarre"
+			"payload":"Demarrer"
 		}
 	]
 	}
