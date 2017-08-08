@@ -119,10 +119,8 @@ function sendGenericMessage(sender) {
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
         method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
+        headers: {'Content-Type': 'application/json'},
+		form: Templates.defaulttemplates["Menu"]
     }, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
