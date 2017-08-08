@@ -42,10 +42,6 @@ facebookDemarre();
 facebookMenu();
 
 app.post('/webhook/', function (req, res) {
-	
-	sendButtonMessage(sender,event,token)
-			 console.log('message sent')
-            
 			
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
