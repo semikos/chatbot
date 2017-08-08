@@ -36,9 +36,10 @@ app.get('/webhook/', function (req, res) {
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
+
+sendGenericMessage();
 			
 app.post('/webhook/', function (req, res) {
-			
 			
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -94,43 +95,24 @@ function sendTextMessage(sender, text) {
 }
 
 function sendGenericMessage() {
-    let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-				"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
-                "buttons": [
-					{
-						"content_type":"text",
-						"title": "🎀 Catégories",
-						"payload": "Categories"
-					},
-					{
-						"content_type":"text",
-						"title": " 🔍 Recherche",
-						"payload": "Recherche"
-					}
-				]
-            }
-        }
-    }
+    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
         qs: {access_token:token},
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
 		form: Templates.defaulttemplates["Menu"]
-    }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          // Print out the response body
-          console.log(": Updated.");
-          console.log(body);
-      } else {
-          //  Handle errors
-          console.log(": Failed. Need to handle errors.");
-          console.log(body);
-      }
+    }, 
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			//Print out the response body
+			console.log(": Updated.");
+			console.log(body);
+		} else {
+			//Handle errors
+			console.log(": Failed. Need to handle errors.");
+			console.log(body);
+		}
 	})
 }
 

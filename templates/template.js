@@ -121,8 +121,8 @@ let templates = {
 	"Menu":{
 		"locale":"default",
 		"composer_input_disabled":true,
-		"call_to_actions": [
-			{	"title":" ❔ Aide",
+		"call_to_actions": 
+			[{	"title":" ❔ Aide",
 				"type":"nested",
 				"call_to_actions":
 			   	[
@@ -153,10 +153,9 @@ let templates = {
 						"payload":"Recheche"
 					}
                 ]
-			}
-	]},
-
-	"Demarre" : {
+			}]
+	},
+	"Demarre":{
 	"setting_type":"call_to_actions",
 	"thread_state":"new_thread",
 	"call_to_actions":
@@ -166,7 +165,8 @@ let templates = {
 		}
 	]
 	}
- };
+};
+
 let payement =
 {
 	"hi":
