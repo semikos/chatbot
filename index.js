@@ -283,7 +283,7 @@ function facebookDemarre(){
 }
 
 
-function Demarrer(){
+function Demarrer(event){
 let templates = {
 	// Salutation
 
