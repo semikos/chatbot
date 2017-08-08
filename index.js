@@ -38,6 +38,8 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
+facebookMenu();
+
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -228,32 +230,16 @@ function sendApiMessage(event) {
   apiai.end();
 }
 
-function sendButtonMessage(sender) {
-    let messageData = {
-		"message":{
-		"text":"Pick a color:",
-		"quick_replies":[
-		  {
-			"content_type":"text",
-			"title":"Red",
-			"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-		  },
-		  {
-			"content_type":"text",
-			"title":"Green",
-			"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-		  }
-		]
-	  }
-	}
-    request(
+function facebookMenu(){
+  // Start the request
+  request(
     {
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+token,
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: Templates.defaulttemplates["Menu"]
      },
-	function (error, response, body) {
+  function (error, response, body) {
       if (!error && response.statusCode == 200) {
           // Print out the response body
           console.log(": Updated.");
@@ -263,5 +249,4 @@ function sendButtonMessage(sender) {
           console.log(": Failed. Need to handle errors.");
           console.log(body);
       }
-  })
-}
+  });}
