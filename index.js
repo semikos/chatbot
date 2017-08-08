@@ -57,23 +57,16 @@ app.post('/webhook/', function (req, res) {
 			console.log('message sent')
 			continue
         }
-		
 		/*********************************************************************************************************************************/
 		else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1)
 			|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
-            //sendMenuMessage(sender, "!! " +event, token)
 			sendMenuMessage(sender, event, token)
 			console.log('message sent')
             continue
         }
-		
-		
-		
 		/*********************************************************************************************************************************/
 		
-        console.log('message sent before sendApiMessage')
 		sendApiMessage(event)
-		console.log('message sent after sendApiMessage')
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
