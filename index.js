@@ -55,8 +55,7 @@ app.post('/webhook/', function (req, res) {
         if (text === 'Generic') {
             sendButtonMessage(sender,event,token)
 			console.log('message sent')
-			
-            continue
+			continue
         }
 		
 		/*********************************************************************************************************************************/
