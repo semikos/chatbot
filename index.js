@@ -235,7 +235,7 @@ function facebookMenu(){
   // Start the request
     request(
     {
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+token,
+      url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+token,
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: Templates.defaulttemplates["Menu"]
