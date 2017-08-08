@@ -33,13 +33,14 @@ app.get('/webhook/', function (req, res) {
 	res.send('token='+token+'vtoken:'+vtoken)
 })
 
+facebookDemarre;
+facebookMenu;
+
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-facebookDemarre();
-facebookMenu();
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -255,20 +256,21 @@ function facebookMenu(){
 
 function facebookDemarre(){
  // Start the request
- request({
-     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
-     method: 'POST',
-     headers: {'Content-Type': 'application/json'},
-     form:Templates.defaulttemplates["Demarre"]
+	 request({
+		 url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
+		 method: 'POST',
+		 headers: {'Content-Type': 'application/json'},
+		 form:Templates.defaulttemplates["Demarre"]
 
- },
- function (error, response, body) {
-     if (!error && response.statusCode == 200) {
-         // Print out the response body
-         console.log(": Updated.");
-         console.log(body);
-     } else {
-         console.log(": Failed. Need to handle errors.");
-         console.log(body);
-     }
- });}
+	 },
+	 function (error, response, body) {
+		 if (!error && response.statusCode == 200) {
+			 // Print out the response body
+			 console.log(": Updated.");
+			 console.log(body);
+		 } else {
+			 console.log(": Failed. Need to handle errors.");
+			 console.log(body);
+		 }
+	 });
+}
