@@ -56,7 +56,7 @@ app.post('/webhook/', function (req, res) {
             //sendButtonMessage(sender,event,token)
 			//console.log('message sent')
 			
-			 Demarrer()
+			 Demarrer(sender,event,token)
 			 console.log('message sent')
             
             continue
@@ -286,7 +286,7 @@ function facebookDemarre(){
 
 
 
-function Demarrer(){
+function Demarrer(sender){
 let templates = {
 	// Salutation
 
@@ -308,6 +308,21 @@ let templates = {
 		]
 	},
 
-};
+}
+request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 
 }
