@@ -66,7 +66,7 @@ app.post('/webhook/', function (req, res) {
 			/***************************************************************************************************************************/
 			sendApiMessage(event)
 		}
-		else if (event.postback) {
+		if (event.postback && event.postback.payload) {
 			processPostback(event)
 			continue
 		}
