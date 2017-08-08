@@ -62,7 +62,7 @@ app.post('/webhook/', function (req, res) {
 		else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1)
 			|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
             //sendMenuMessage(sender, "!! " +event, token)
-			Demarrer(sender, event, token)
+			sendMenuMessage(sender, event, token)
 			console.log('message sent')
             continue
         }
@@ -109,30 +109,19 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
+                "template_type": "quick_replies",
+                "elements": [
+					{
+						"content_type":"text",
+						"title": "🎀 Catégories",
+						"payload": "Categories"
+					},
+					{
+						"content_type":"text",
+						"title": " 🔍 Recherche",
+						"payload": "Recherche"
+					}
+				]
             }
         }
     }
@@ -286,27 +275,25 @@ function facebookDemarre(){
 function Demarrer(sender){
 	let sender = event.sender.id;
 	
-let templates = {
-	// Salutation
-
-	"welcome_message":
-	{
-   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
-    "quick_replies":
-		[
-      {
-        "content_type":"text",
-        "title": "🎀 Catégories",
-        "payload": "Categories"
-      },
-      {
-        "content_type":"text",
-        "title": " 🔍 Recherche",
-        "payload": "Recherche"
-      }
-		]
+	let templates = {
+		"welcome_message":
+		{
+	   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+		"quick_replies":
+			[
+		  {
+			"content_type":"text",
+			"title": "🎀 Catégories",
+			"payload": "Categories"
+		  },
+		  {
+			"content_type":"text",
+			"title": " 🔍 Recherche",
+			"payload": "Recherche"
+		  }
+			]
+		}
 	}
-}
 	request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
