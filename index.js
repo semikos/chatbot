@@ -256,7 +256,7 @@ function facebookMenu(){
 function facebookDemarre(){
  // Start the request
  request({
-     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+PAGE_ACCESS_TOKEN,
+     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
      method: 'POST',
      headers: {'Content-Type': 'application/json'},
      form:Templates.defaulttemplates["Demarre"]
