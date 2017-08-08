@@ -44,10 +44,6 @@ facebookMenu();
 app.post('/webhook/', function (req, res) {
 			
 			
-			 Demarrer()
-			 console.log('message sent')
-            continue
-			
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
       let event = req.body.entry[0].messaging[i]
@@ -57,8 +53,12 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text 
         if (text === 'Generic') {
-            sendButtonMessage(sender,event,token)
+            //sendButtonMessage(sender,event,token)
+			//console.log('message sent')
+			
+			 Demarrer()
 			 console.log('message sent')
+            
             continue
         }
 		
