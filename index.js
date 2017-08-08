@@ -67,57 +67,13 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			processPostback(event)
+			sendTextMessage(sender, "Salutations! Je suis CybExbot, votre annuaire de BOTs développé par CybEx Solutions !", token);
 			continue
 		}
     }
     res.sendStatus(200)
 })
 
-function processPostback(event) {
-  var senderId = event.sender.id;
-  var payload = event.postback.payload;
-
-  if (payload === "Greeting") {
-    // Get user's first name from the User Profile API
-    // and include it in the greeting
-    request({
-      url: "https://graph.facebook.com/v2.6/" + senderId,
-      qs: {
-        access_token: token,
-        fields: "first_name"
-      },
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        name = bodyObj.first_name;
-        greeting = "Hi " + name + ". ";
-      }
-      
-      sendMessage(senderId, {text: greeting});
-    });
-  }
-}
-
-function sendMessage(recipientId, message) {
-  request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: {access_token: token},
-    method: "POST",
-    json: {
-      recipient: {id: recipientId},
-      message: message,
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log("Error sending message: " + response.error);
-    }
-  });
-}
 
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
