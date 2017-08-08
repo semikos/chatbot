@@ -121,13 +121,17 @@ function sendGenericMessage(sender) {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
 		form: Templates.defaulttemplates["Menu"]
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+          // Print out the response body
+          console.log(": Updated.");
+          console.log(body);
+      } else {
+          //  Handle errors
+          console.log(": Failed. Need to handle errors.");
+          console.log(body);
+      }
+	})
 }
 
 /*******************************************************************************************************************************/
