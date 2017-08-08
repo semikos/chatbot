@@ -283,9 +283,8 @@ function facebookDemarre(){
 }
 
 
-function Demarrer(event){
+function Demarrer(sender){
 	let sender = event.sender.id;
-	let text = event.message.text;
 	
 let templates = {
 	// Salutation
