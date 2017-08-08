@@ -38,6 +38,7 @@ app.listen(app.get('port'), function() {
 })
 
 facebookDemarre();
+facebookMenu();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
