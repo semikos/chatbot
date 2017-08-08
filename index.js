@@ -274,3 +274,32 @@ function facebookDemarre(){
      }
  });
 }
+
+
+
+
+function Demarrer(){
+let templates = {
+	// Salutation
+
+	"welcome_message":
+	{
+   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+    "quick_replies":
+		[
+      {
+        "content_type":"text",
+        "title": "🎀 Catégories",
+        "payload": "Categories"
+      },
+      {
+        "content_type":"text",
+        "title": " 🔍 Recherche",
+        "payload": "Recherche"
+      }
+		]
+	},
+
+};
+
+}
