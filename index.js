@@ -240,7 +240,8 @@ function facebookMenu(){
   // Start the request
     request(
     {
-      url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+token,
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+	  qs: {access_token: token},
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: Templates.defaulttemplates["Menu"]
@@ -261,7 +262,8 @@ function facebookMenu(){
 function facebookDemarre(){
  // Start the request
  request({
-     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
+     url: 'https://graph.facebook.com/v2.6/me/thread_settings',
+	 qs: {access_token: token},
      method: 'POST',
      headers: {'Content-Type': 'application/json'},
      form:Templates.defaulttemplates["Demarre"]
@@ -277,4 +279,44 @@ function facebookDemarre(){
          console.log(body);
      }
  });
+}
+
+
+function Demarrer(){
+let templates = {
+	// Salutation
+
+	"welcome_message":
+	{
+   "text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+    "quick_replies":
+		[
+      {
+        "content_type":"text",
+        "title": "🎀 Catégories",
+        "payload": "Categories"
+      },
+      {
+        "content_type":"text",
+        "title": " 🔍 Recherche",
+        "payload": "Recherche"
+      }
+		]
+	}
+}
+	request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 }
