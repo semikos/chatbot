@@ -2,7 +2,7 @@
 
 const token = process.env.FB_PAGE_TOKEN
 const vtoken = process.env.FB_VERIFY_ACCESS_TOKEN
-const Facebook = require('./outils/facebook/facebook.js');
+
 const apiaiApp = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 })
 
 // for Facebook verification
-app.get('/webhook', function (req, res) {
+app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
         res.send(req.query['hub.challenge'])
 		
@@ -33,16 +33,15 @@ app.get('/webhook', function (req, res) {
 	res.send('token='+token+'vtoken:'+vtoken)
 })
 
-Facebook.facebookDemarre();
-Facebook.facebookMenu();
-
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
+facebookDemarre();
+facebookMenu();
 
-app.post('/webhook', function (req, res) {
+app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
       let event = req.body.entry[0].messaging[i]
@@ -230,4 +229,47 @@ function sendApiMessage(event) {
   });
 
   apiai.end();
+}
+
+function facebookMenu(){
+  // Start the request
+    request(
+    {
+      url: 'https://graph.facebook.com/v2.6/me/messages?access_token='+token,
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      form: Templates.defaulttemplates["Menu"]
+    },
+    function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+          // Print out the response body
+          console.log(": Updated.");
+          console.log(body);
+      } else {
+          //  Handle errors
+          console.log(": Failed. Need to handle errors.");
+          console.log(body);
+      }
+	});
+}
+
+function facebookDemarre(){
+ // Start the request
+ request({
+     url: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+token,
+     method: 'POST',
+     headers: {'Content-Type': 'application/json'},
+     form:Templates.defaulttemplates["Demarre"]
+
+ },
+ function (error, response, body) {
+     if (!error && response.statusCode == 200) {
+         // Print out the response body
+         console.log(": Updated.");
+         console.log(body);
+     } else {
+         console.log(": Failed. Need to handle errors.");
+         console.log(body);
+     }
+ });
 }
