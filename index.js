@@ -38,7 +38,6 @@ app.listen(app.get('port'), function() {
 })
 
 facebookDemarre();
-facebookMenu();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -68,6 +67,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, "Salutations! Je suis CybExbot, votre annuaire de BOTs développé par CybEx Solutions !", token);
+			facebookMenu();
 			continue
 		}
     }
@@ -201,7 +201,7 @@ function sendApiMessage(event) {
 }
 
 function facebookMenu(){
-  // Start the request
+	// Start the request
     request(
     {
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
