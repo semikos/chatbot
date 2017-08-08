@@ -37,39 +37,39 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-sendGenericMessage();
-			
+facebookDemarre();
+
+// Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
 			
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
-      let event = req.body.entry[0].messaging[i]
-      let sender = event.sender.id
+		let event = req.body.entry[0].messaging[i]
+		let sender = event.sender.id
 	  
-      if (event.message && event.message.text) {
-		  console.log('eventmessage')
-        let text = event.message.text 
-        if (text === 'Generic') {
-            sendGenericMessage()
-			console.log('message sent')
+		if (event.message && event.message.text) {
+			console.log('eventmessage')
+			let text = event.message.text 
+			if (text === 'Generic') {
+				sendGenericMessage()
+				console.log('message sent')
+				continue
+			}
+			/***************************************************************************************************************************/
+			else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1)
+				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
+				sendMenuMessage(sender, event, token)
+				console.log('message sent')
+				continue
+			}
+			/***************************************************************************************************************************/
+			sendApiMessage(event)
+		}
+		else if (event.postback) {
+			let text = JSON.stringify(event.postback)
+			sendTextMessage(sender, "Postback: "+text.substring(0, 200), token)
 			continue
-        }
-		/*********************************************************************************************************************************/
-		else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('nouveau'.toUpperCase()) !== -1)
-			|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
-			sendMenuMessage(sender, event, token)
-			console.log('message sent')
-            continue
-        }
-		/*********************************************************************************************************************************/
-
-		sendApiMessage(event)
-      }
-      if (event.postback) {
-        let text = JSON.stringify(event.postback)
-        sendTextMessage(sender, "Postback: "+text.substring(0, 200), token)
-        continue
-      }
+		}
     }
     res.sendStatus(200)
 })
