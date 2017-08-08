@@ -98,8 +98,9 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "template_type": "quick_replies",
-                "elements": [
+                "template_type": "button",
+				"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
+                "buttons": [
 					{
 						"content_type":"text",
 						"title": "🎀 Catégories",
