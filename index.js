@@ -250,32 +250,12 @@ function facebookDemarre(){
 
 function Demarrer(sender){
 	
-	let templates = {
-		"welcome_message":
-		{
-		"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
-		"quick_replies":
-			[
-		  {
-			"content_type":"text",
-			"title": "🎀 Catégories",
-			"payload": "Categories"
-		  },
-		  {
-			"content_type":"text",
-			"title": " 🔍 Recherche",
-			"payload": "Recherche"
-		  }
-			]
-		}
-	}
 	request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
         method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: templates['welcome_message'],
+        headers: {'Content-Type': 'application/json'},
+		form:Templates.templates["welcome_message"]
         }
     }, function(error, response, body) {
         if (error) {
