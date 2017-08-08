@@ -288,7 +288,7 @@ function Demarrer(sender){
         method: 'POST',
         json: {
             recipient: {id:sender},
-            message: templates.['welcome_message'],
+            message: templates['welcome_message'],
         }
     }, function(error, response, body) {
         if (error) {
