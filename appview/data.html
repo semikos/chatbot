@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Recherche </title>
+  </head>
+  <style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+  }
+  </style>
+  <body>
+  <p><h4> Les données des utilisateurs du bot </h4></p>
+  <script src ='../outils/data/mallocbase.js'>
+
+  function tableCreate(){
+    import {extractData} from '../outils/data/mallocbase'
+    var body = document.body,
+        tbl  = document.createElement('table');
+
+    var tr = tbl.insertRow();
+    var td = tr.insertCell();
+    td.appendChild(document.createTextNode('photo de profile'));
+    td = tr.insertCell();
+    td.appendChild(document.createTextNode('Nom & prenom'));
+    var td = tr.insertCell();
+    td.appendChild(document.createTextNode('genre'));
+    var td = tr.insertCell();
+    td.appendChild(document.createTextNode('Recherche'));
+     extractData().then((data)=>
+    {if (data)
+    alert(data);
+    data.forEach((infos)=>
+    {
+      tr = tbl.insertRow();
+        var td = tr.insertCell();
+    td.appendChild(document.createTextNode(infos.last_name));
+    }
+
+  )});
+
+
+                    //td.setAttribute('rowSpan', '2');
+
+    body.appendChild(tbl);
+}
+tableCreate();
+  </script>
+  </body>
+</html> -->
