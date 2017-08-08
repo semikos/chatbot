@@ -118,59 +118,55 @@ let templates = {
 };
 
  let defaulttemplates = {
-	 "Menu":{
-
+	"Menu":{
 		"locale":"default",
-    "composer_input_disabled":true,
-    "call_to_actions":
-    [
-       {"title":" ❔ Aide",
-			 "type":"nested",
-			 "call_to_actions":
-			   			[
-								{
-									"type":"web_url",
-									"title":" 🌐 voir website",
-									"url":"http://www.malloc.rocks/shop/fr/"
-								},
-
-								{ "type":"postback",
-								 "title": " ❔ Aide",
-								 "payload":"HELP"
-							 }
-
-							]
-				 },
-
-						{	"title":"Nos offres",
-							"type":"nested",
-						    "call_to_actions":
-									 [
-									 	{
-										 "type":"postback",
-										 "title":" 🎀 Nos Catégorie",
-										 "payload":"Categorie"
-									 },
-									 {
-										 "type":"postback",
-										 "title":" 🔍 Recherche",
-										 "payload":"Recheche"
-									 }
-                 ]
-							}
-	]}  ,
-
-	 "Demarre" : {
-	 "setting_type":"call_to_actions",
-	 "thread_state":"new_thread",
-	 "call_to_actions":
-	 [
-			{
-				"payload":"Demarre"
+		"composer_input_disabled":true,
+		"call_to_actions": [
+			{	"title":" ❔ Aide",
+				"type":"nested",
+				"call_to_actions":
+			   	[
+					{
+						"type":"web_url",
+						"title":" 🌐 voir website",
+						"url":"http://www.malloc.rocks/shop/fr/"
+					},
+					{
+						"type":"postback",
+						"title": " ❔ Aide",
+						"payload":"HELP"
+					}
+				]
+			},
+			{	"title":"Nos offres",
+				"type":"nested",
+			    "call_to_actions": 
+				[
+					{
+						"type":"postback",
+						"title":" 🎀 Nos Catégorie",
+						"payload":"Categorie"
+					},
+					{
+						"type":"postback",
+						"title":" 🔍 Recherche",
+						"payload":"Recheche"
+					}
+                ]
 			}
-	 ]
-	 }
- } ;
+	]},
+
+	"Demarre" : {
+	"setting_type":"call_to_actions",
+	"thread_state":"new_thread",
+	"call_to_actions":
+	[
+		{
+			"payload":"Demarre"
+		}
+	]
+	}
+ };
 let payement =
 {
 	"hi":
@@ -275,7 +271,7 @@ let payement =
 		        }
 		    }
 		}
-		}
+}
 		let feedback = {
 			"text": " Vous avez trouvé que vous chercher? ",
 	     "quick_replies":
