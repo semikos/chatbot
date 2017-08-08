@@ -7,7 +7,6 @@ const apiaiApp = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const Templates = require('./templates/template.js')
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
