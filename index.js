@@ -39,7 +39,6 @@ app.listen(app.get('port'), function() {
 
 facebookDemarre();
 facebookMenu();
-Demarrer();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -68,8 +67,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		else if (event.postback) {
-			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback: "+text.substring(0, 200), token)
+			Demarrer();
 			continue
 		}
     }
