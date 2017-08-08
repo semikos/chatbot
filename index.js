@@ -37,6 +37,8 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
+            sendGenericMessage();
+			
 app.post('/webhook/', function (req, res) {
 			
 			
@@ -49,7 +51,7 @@ app.post('/webhook/', function (req, res) {
 		  console.log('eventmessage')
         let text = event.message.text 
         if (text === 'Generic') {
-            sendGenericMessage(sender,event,token)
+            sendGenericMessage()
 			console.log('message sent')
 			continue
         }
@@ -93,7 +95,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function sendGenericMessage(sender) {
+function sendGenericMessage() {
     let messageData = {
         "attachment": {
             "type": "template",
