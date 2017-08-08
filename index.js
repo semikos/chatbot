@@ -233,7 +233,6 @@ function facebookDemarre(){
      method: 'POST',
      headers: {'Content-Type': 'application/json'},
      form:Templates.defaulttemplates["Demarrer"]
-
  },
  function (error, response, body) {
      if (!error && response.statusCode == 200) {
@@ -256,7 +255,6 @@ function Demarrer(sender){
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
 		form:Templates.templates["welcome_message"]
-        }
     }, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
