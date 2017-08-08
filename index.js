@@ -313,7 +313,7 @@ let templates = {
         method: 'POST',
         json: {
             recipient: {id:sender},
-            message: templates,
+            message: templates.['welcome_message'],
         }
     }, function(error, response, body) {
         if (error) {
