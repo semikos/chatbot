@@ -9,6 +9,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
+const mongoose = require('mongoose')
+const BotSchema = require('./BotSchema.js')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -37,7 +39,14 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
+mongoose.connect('mongodb://localhost/botdb');
 facebookDemarre();
+var bot = new BotSchema({name : "Adecco", role : "Consultant Financier", date_creation: "12-12-2012", proprietaire : "Dunno", website : "www.google.com" });
+
+bot.save(error, bot) {
+	if (error) return console.log("error");
+	console.log(bot.name);
+}
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
