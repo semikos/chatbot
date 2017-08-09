@@ -56,7 +56,7 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			/***************************************************************************************************************************/
-			else if (text.toUpperCase() === 'Help'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
+			else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
 				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
 				sendMenuMessage(sender, event, token)
 				console.log('message sent')
@@ -208,6 +208,10 @@ function facebookMenu(){
       headers: {'Content-Type': 'application/json'},
       form: Templates.defaulttemplates["Menu"]
     },
+	sendMenuMessage(sender, event, token)
+				console.log('message sent')
+				continue
+				,
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
           // Print out the response body
