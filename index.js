@@ -242,6 +242,7 @@ function facebookDemarre(){
  });
 }
 
+<<<<<<< HEAD
 //conx bd
 var MongoClient = require('mongodb').MongoClient;
 
@@ -249,3 +250,6 @@ var uri = "mongodb://souhaib:<heUFhRv92sia0MYp>@cluster0-shard-00-00-5aulw.mongo
 MongoClient.connect(uri, function(err, db) {
   db.close();
 });
+=======
+
+>>>>>>> af5cba5cab6572acc839cc068a2eb61679acb24d
