@@ -43,10 +43,10 @@ mongoose.connect('mongodb://localhost/botdb');
 facebookDemarre();
 var bot = new BotSchema({name : "Adecco", role : "Consultant Financier", date_creation: "12-12-2012", proprietaire : "Dunno", website : "www.google.com" });
 
-bot.save(error, bot) {
+bot.save(function (error, bot) {
 	if (error) return console.log("error");
 	console.log(bot.name);
-}
+});
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
