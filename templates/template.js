@@ -119,10 +119,10 @@ let templates = {
 
  let defaulttemplates = {
 	"Menu":{
-		"setting_type" : "call_to_actions",
-		"thread_state" : "existing_thread",
 		"locale":"default",
 		"composer_input_disabled":true,
+		"setting_type" : "call_to_actions",
+		"thread_state" : "new_thread",
 		"call_to_actions": 
 			[{	"title":" ❔ Aide",
 				"type":"nested",
