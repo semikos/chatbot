@@ -208,10 +208,6 @@ function facebookMenu(){
       headers: {'Content-Type': 'application/json'},
       form: Templates.defaulttemplates["Menu"]
     },
-	sendMenuMessage(sender, event, token)
-				console.log('message sent')
-				continue
-				,
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
           // Print out the response body
