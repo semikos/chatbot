@@ -12,9 +12,3 @@ var Bot = new BotSchema ( {
 	website : String
 });
 
-BotSchema.path('name').required(true);
-BotSchema.path('role').required(true);
-BotSchema.path('date_creation').required(true);
-BotSchema.path('proprietaire').required(true);
-BotSchema.path('website').required(true);
-
