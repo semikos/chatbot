@@ -248,7 +248,3 @@ var uri = "mongodb://souhaib:<heUFhRv92sia0MYp>@cluster0-shard-00-00-5aulw.mongo
 MongoClient.connect(uri, function(err, db) {
   db.close();
 });
-
-//test 
-var stitch = require("stitch");
-client = new stitch.StitchClient("chatbot-kdlgq");
