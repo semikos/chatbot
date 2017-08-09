@@ -39,12 +39,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-mongoose.connect('mongodb://localhost/botdb');
-var db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
-	db.once('open', function() {
-	// we're connected!
-});
+mongoose.openUri('mongodb://localhost/botdb');
 
 facebookDemarre();
 
