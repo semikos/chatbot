@@ -41,7 +41,7 @@ facebookDemarre();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
-			
+	facebookMenu();
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
@@ -67,14 +67,14 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, "Salutations! Je suis CybExbot, votre annuaire de BOTs développé par CybEx Solutions !", token);
-			facebookMenu();
+			
 			continue
 		}
     }
     res.sendStatus(200)
 })
 
-
+// Send echo message.
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
     request({
@@ -95,7 +95,6 @@ function sendTextMessage(sender, text) {
 }
 
 function sendGenericMessage() {
-    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
         qs: {access_token:token},
@@ -200,11 +199,11 @@ function sendApiMessage(event) {
   apiai.end();
 }
 
+// Menu button.
 function facebookMenu(){
-	// Start the request
     request(
     {
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+      url: 'https://graph.facebook.com/v2.6/me/thread_settings',
 	  qs: {access_token: token},
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -223,8 +222,8 @@ function facebookMenu(){
 	});
 }
 
+// Get Started button.
 function facebookDemarre(){
- // Start the request
  request({
      url: 'https://graph.facebook.com/v2.6/me/thread_settings',
 	 qs: {access_token: token},
@@ -242,22 +241,4 @@ function facebookDemarre(){
          console.log(body);
      }
  });
-}
-
-
-function Demarrer(sender){
-	
-	request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-		form:Templates.templates["welcome_message"]
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
 }
