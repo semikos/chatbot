@@ -120,7 +120,7 @@ let templates = {
  let defaulttemplates = {
 	"Menu":{
 		"setting_type" : "call_to_actions",
-		"thread_state" : "new_thread",
+		"thread_state" : "existing_thread",
 		"call_to_actions": 
 			[{
 				"type":"web_url",
