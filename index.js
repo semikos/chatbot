@@ -240,4 +240,15 @@ function facebookDemarre(){
          console.log(body);
      }
  });
-}
+
+//conection db
+var MongoClient = require('mongodb').MongoClient;
+
+var uri = "mongodb://souhaib:<heUFhRv92sia0MYp>@cluster0-shard-00-00-5aulw.mongodb.net:27017,cluster0-shard-00-01-5aulw.mongodb.net:27017,cluster0-shard-00-02-5aulw.mongodb.net:27017/<botdb>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin";
+MongoClient.connect(uri, function(err, db) {
+  db.close();
+});
+
+//test 
+var stitch = require("stitch");
+client = new stitch.StitchClient("chatbot-kdlgq");
