@@ -42,9 +42,9 @@ app.listen(app.get('port'), function() {
 mongoose.connect('mongodb://localhost/botdb');
 facebookDemarre();
 
-var BotSchema = mongoose.model('BotSchema',BotSchema);
+var BotS = mongoose.model('BotS',BotSchema);
 
-var bot = new BotSchema({name : "Adecco", role : "Consultant Financier", date_creation: "12-12-2012", proprietaire : "Dunno", website : "www.google.com" });
+var bot = new BotS({name : "Adecco", role : "Consultant Financier", date_creation: "12-12-2012", proprietaire : "Dunno", website : "www.google.com" });
 
 bot.save(function (error, bot) {
 	if (error) return console.log("error");
