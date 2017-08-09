@@ -40,6 +40,12 @@ app.listen(app.get('port'), function() {
 })
 
 mongoose.connect('mongodb://localhost/botdb');
+var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+	db.once('open', function() {
+	// we're connected!
+});
+
 facebookDemarre();
 
 var BotS = mongoose.model('BotS',BotSchema);
