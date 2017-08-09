@@ -119,42 +119,17 @@ let templates = {
 
  let defaulttemplates = {
 	"Menu":{
-		"locale":"default",
-		"composer_input_disabled":true,
 		"setting_type" : "call_to_actions",
 		"thread_state" : "new_thread",
 		"call_to_actions": 
-			[{	"title":" ❔ Aide",
-				"type":"nested",
-				"call_to_actions":
-			   	[
-					{
-						"type":"web_url",
-						"title":" 🌐 voir website",
-						"url":"http://www.malloc.rocks/shop/fr/"
-					},
-					{
-						"type":"postback",
-						"title": " ❔ Aide",
-						"payload":"HELP"
-					}
-				]
-			},
-			{	"title":"Nos offres",
-				"type":"nested",
-			    "call_to_actions": 
-				[
-					{
-						"type":"postback",
-						"title":" 🎀 Nos Catégorie",
-						"payload":"Categorie"
-					},
-					{
-						"type":"postback",
-						"title":" 🔍 Recherche",
-						"payload":"Recheche"
-					}
-                ]
+			[{
+				"type":"web_url",
+				"title":"Voire Site Web.",
+				"url":"https://www.facebook.com/cybexbot/"
+			},{
+				"type":"postback",
+				"title":"Help",
+				"payload":"Veuillez écrire 'Menu' ou 'Help' pour plus d'informations."
 			}]
 	},
 	"Demarrer":{
