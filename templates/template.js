@@ -129,7 +129,7 @@ let templates = {
 			},{
 				"type":"postback",
 				"title":"Help",
-				"payload":"Veuillez écrire 'Menu' ou 'Help' pour plus d'informations."
+				"payload":"Veuillez ecrire Menu ou Help pour plus d informations."
 			}]
 	},
 	"Demarrer":{
