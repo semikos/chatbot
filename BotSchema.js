@@ -12,9 +12,9 @@ var Bot = new BotSchema ( {
 	website : String
 });
 
-Schema.path('name').required(true);
-Schema.path('role').required(true);
-Schema.path('date_creation').required(true);
-Schema.path('proprietaire').required(true);
-Schema.path('website').required(true);
+BotSchema.path('name').required(true);
+BotSchema.path('role').required(true);
+BotSchema.path('date_creation').required(true);
+BotSchema.path('proprietaire').required(true);
+BotSchema.path('website').required(true);
 
