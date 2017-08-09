@@ -66,8 +66,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, "Salutations! Je suis CybExbot, votre annuaire de BOTs développé par CybEx Solutions !", token);
-			
+			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
     }
