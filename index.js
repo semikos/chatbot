@@ -9,7 +9,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
-const mongoose = require('mongoose')
+const mongo = require('mongodb')
+const assert = require('assert')
 const BotSchema = require('./BotSchema.js')
 
 app.set('port', (process.env.PORT || 5000))
@@ -39,23 +40,24 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-//mongoose.connect('mongodb://localhost/botdb');
-//var db = mongoose.connection;
-//	db.on('error', console.error.bind(console, 'connection error:'));
-//	db.once('open', function() {
-	
-//});
+var url = "mongodb://localhost:27017/test";
+
+var item = {
+	name : "Adecco",
+	role : "Assistant Financier"
+	website : "www.google.com"
+}
+
+mongo.connect(url, function (err,db) {
+	assert.equal(null, err);
+	db.collection('bot-data').insertOne(item, function(err, result) {
+		assert.equal(null, err);
+		console.log(item);
+		db.close();
+	});
+});
 
 facebookDemarre();
-
-var BotS = mongoose.model('BotS',BotSchema);
-
-var bot = new BotS({name : "Adecco", role : "Consultant Financier", date_creation: "12-12-2012", proprietaire : "Dunno", website : "www.google.com" });
-
-bot.save(function (error, bot) {
-	if (error) return console.log("error");
-	console.log(bot.name);
-});
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
