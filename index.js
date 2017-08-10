@@ -87,11 +87,11 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
+			discussionButtons(sender);
 			continue
 		}
     }
-	discussionButtons(sender);
-    res.sendStatus(200)
+	res.sendStatus(200)
 })
 
 // Send echo message.
