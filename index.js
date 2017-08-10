@@ -57,6 +57,7 @@ mongo.connect(url, function (err,db) {
 	});
 });*/
 
+discussionButtons();
 facebookDemarre();
 
 // Posting to the webhook and Facebook messenger application.
@@ -245,6 +246,25 @@ function facebookDemarre(){
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
 		form:Templates.defaulttemplates["Demarrer"]
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(": Updated.");
+			console.log(body);
+		} else {
+			console.log(": Failed. Need to handle errors.");
+			console.log(body);
+		}
+	});
+}
+
+function discussionButtons(){
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/thread_settings',
+		qs: {access_token: token},
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		form:Templates.templates["welcome_message"]
 	},
 	function (error, response, body) {
 		if (!error && response.statusCode == 200) {
