@@ -180,7 +180,6 @@ function sendMenuMessage(sender) {
 //Send message using API.AI
 function sendApiMessage(event) {
   
-  console.log('inside method')
   let sender = event.sender.id;
   let text = event.message.text;
 
@@ -259,8 +258,7 @@ function facebookDemarre(){
 	});
 }
 
-function discussionButtons(event){
-	let sender = event.sender.id;
+function discussionButtons(sender){
 	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
