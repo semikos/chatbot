@@ -264,7 +264,19 @@ function discussionButtons(){
 		qs: {access_token: token},
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
-		form:Templates.templates["welcome_message"]
+		json: {
+			recipient: {id: sender},
+			message: {
+					"setting_type" : "messages",
+					"text":"Please share your location:",
+					"quick_replies":[{
+						"content_type":"text",
+						"title":"Red",
+						"payload":"You Selected Red",
+						"image_url":"http://petersfantastichats.com/img/red.png"
+					}]
+			}
+		}
 	},
 	function (error, response, body) {
 		if (!error && response.statusCode == 200) {

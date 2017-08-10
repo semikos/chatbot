@@ -6,19 +6,17 @@ let templates = {
 	"welcome_message":
 	{
 		"recipient":{
-		"id":"123456"
+		"id":""
 		},
 		"message":{
 		"text":"Please share your location:",
-		"quick_replies":[
-			{
+		"quick_replies":[{
 				"content_type":"text",
 				"title":"Red",
 				"payload":"You Selected Red",
 				"image_url":"http://petersfantastichats.com/img/red.png"
-			}
-		]
-	  }
+			}]
+		}
 	},
 // catalogue
 
