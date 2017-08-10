@@ -269,7 +269,6 @@ function discussionButtons(sender){
 		json: {
 			recipient: {id: sender},
 			message: {
-					"text": "Please share your location:",
 					"quick_replies": [{
 						"content_type":"text",
 						"title":"Red",
