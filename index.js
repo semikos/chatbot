@@ -58,7 +58,6 @@ mongo.connect(url, function (err,db) {
 });*/
 
 facebookDemarre();
-discussionButtons();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -70,7 +69,6 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 
 		if (event.message && event.message.text) {
-			discussionButtons(sender);
 			console.log('eventmessage')
 			let text = event.message.text 
 			if (text === 'Generic') {
@@ -87,6 +85,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
+			discussionButtons(sender);
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
