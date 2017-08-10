@@ -46,7 +46,7 @@ var item = {
 	name : "Adecco",
 	role : "Assistant Financier",
 	website : "www.google.com"
-}
+};
 
 mongo.connect(url, function (err,db) {
 	assert.equal(null, err);
