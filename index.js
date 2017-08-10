@@ -40,7 +40,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-var url = "mongodb://localhost:"+app.get('port')+"/test";
+var url = "mongodb://localhost:27017/test";
 
 var item = {
 	name : "Adecco",
@@ -55,7 +55,7 @@ mongo.connect(url, function (err,db) {
 		console.log(item);
 		db.close();
 	});
-}); 
+});
 
 facebookDemarre();
 
@@ -75,14 +75,12 @@ app.post('/webhook/', function (req, res) {
 				console.log('message sent')
 				continue
 			}
-			/***************************************************************************************************************************/
 			else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
 				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
 				sendMenuMessage(sender, event, token)
 				console.log('message sent')
 				continue
 			}
-			/***************************************************************************************************************************/
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
@@ -134,7 +132,6 @@ function sendGenericMessage() {
 	})
 }
 
-/*******************************************************************************************************************************/
 function sendMenuMessage(sender) {
     let messageData = {
         "attachment": {
@@ -177,7 +174,6 @@ function sendMenuMessage(sender) {
         }
     })
 }
-/*****************************************************************************************************************************/
 
 //Send message using API.AI
 function sendApiMessage(event) {
@@ -243,21 +239,20 @@ function facebookMenu(){
 
 // Get Started button.
 function facebookDemarre(){
- request({
-     url: 'https://graph.facebook.com/v2.6/me/thread_settings',
-	 qs: {access_token: token},
-     method: 'POST',
-     headers: {'Content-Type': 'application/json'},
-     form:Templates.defaulttemplates["Demarrer"]
- },
- function (error, response, body) {
-     if (!error && response.statusCode == 200) {
-         // Print out the response body
-         console.log(": Updated.");
-         console.log(body);
-     } else {
-         console.log(": Failed. Need to handle errors.");
-         console.log(body);
-     }
- });
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/thread_settings',
+		qs: {access_token: token},
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		form:Templates.defaulttemplates["Demarrer"]
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(": Updated.");
+			console.log(body);
+		} else {
+			console.log(": Failed. Need to handle errors.");
+			console.log(body);
+		}
+	});
 }
