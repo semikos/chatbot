@@ -258,7 +258,9 @@ function facebookDemarre(){
 	});
 }
 
-function discussionButtons(){
+function discussionButtons(event){
+	let sender = event.sender.id;
+	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token: token},
