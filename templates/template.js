@@ -5,6 +5,7 @@ let templates = {
 
 	"welcome_message":
 	{
+		"setting_type" : "messages",
 		"quick_replies":
 		[{
 			"content_type":"text",
