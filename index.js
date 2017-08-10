@@ -85,12 +85,13 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			discussionButtons(sender);
 			sendTextMessage(sender, event.postback.payload, token);
+			discussionButtons(sender);
 			continue
 		}
     }
 	res.sendStatus(200)
+	discussionButtons(sender);
 })
 
 // Send echo message.
