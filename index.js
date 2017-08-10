@@ -58,7 +58,7 @@ mongo.connect(url, function (err,db) {
 });*/
 
 discussionButtons();
-facebookDemarre();
+//facebookDemarre();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
