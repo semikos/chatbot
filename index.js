@@ -70,6 +70,7 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 
 		if (event.message && event.message.text) {
+			discussionButtons(sender);
 			console.log('eventmessage')
 			let text = event.message.text 
 			if (text === 'Generic') {
@@ -87,7 +88,6 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
-			discussionButtons(sender);
 			continue
 		}
     }
