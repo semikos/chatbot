@@ -5,20 +5,17 @@ let templates = {
 
 	"welcome_message":
 	{
-		"setting_type" : "quick_replies",
 		"quick_replies":
-			[
-		  {
+		[{
 			"content_type":"text",
 			"title": "🎀 Catégories",
 			"payload": "Categories"
-		  },
-		  {
+			},
+			{
 			"content_type":"text",
 			"title": " 🔍 Recherche",
 			"payload": "Recherche"
-		  }
-			]
+		}]
 	},
 // catalogue
 
@@ -272,12 +269,12 @@ let payement =
         "url":"https://www.facebook.com/1261828777234244/videos/1323442611072860/"
       }
     }}
+	
 module.exports =
 {
-helpvideo:helpvideo,
+	helpvideo:helpvideo,
 	templates: templates ,
 	defaulttemplates:defaulttemplates ,
 	payement:payement,
 	feedback:feedback
-
 };
