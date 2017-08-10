@@ -44,7 +44,7 @@ var url = "mongodb://localhost:27017/test";
 
 var item = {
 	name : "Adecco",
-	role : "Assistant Financier"
+	role : "Assistant Financier",
 	website : "www.google.com"
 }
 
