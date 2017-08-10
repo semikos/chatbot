@@ -269,12 +269,12 @@ function discussionButtons(sender){
 		json: {
 			recipient: {id: sender},
 			message: {
-					"text":"Please share your location:",
-					"quick_replies":[{
+					"text": "Please share your location:",
+					"quick_replies": [{
 						"content_type":"text",
 						"title":"Red",
 						"payload":"You Selected Red",
-						"image_url":"http://petersfantastichats.com/img/red.png"
+						"image_url":"http://www.colorcombos.com/colors/FF0000"
 					}]
 			}
 		}
