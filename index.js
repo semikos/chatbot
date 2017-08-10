@@ -69,17 +69,14 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 
 		if (event.message && event.message.text) {
-			console.log('eventmessage')
 			let text = event.message.text 
 			if (text === 'Generic') {
 				sendGenericMessage()
-				console.log('message sent')
 				continue
 			}
 			else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
 				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
 				sendMenuMessage(sender, event, token)
-				console.log('message sent')
 				continue
 			}
 			sendApiMessage(event)
@@ -91,7 +88,6 @@ app.post('/webhook/', function (req, res) {
 		}
     }
 	res.sendStatus(200)
-	discussionButtons(sender);
 })
 
 // Send echo message.
