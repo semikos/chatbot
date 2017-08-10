@@ -68,7 +68,7 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		discussionButtons(sender);
+
 		if (event.message && event.message.text) {
 			console.log('eventmessage')
 			let text = event.message.text 
@@ -90,6 +90,7 @@ app.post('/webhook/', function (req, res) {
 			continue
 		}
     }
+	discussionButtons(sender);
     res.sendStatus(200)
 })
 
