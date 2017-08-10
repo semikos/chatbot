@@ -40,7 +40,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-var url = "mongodb://localhost:27017/test";
+/*var url = "mongodb://localhost:27017/test";
 
 var item = {
 	name : "Adecco",
@@ -55,10 +55,13 @@ mongo.connect(url, function (err,db) {
 		console.log(item);
 		db.close();
 	});
-});
+});*/
+
+facebookDemarre();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
+	facebookMenu();
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
