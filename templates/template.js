@@ -5,20 +5,20 @@ let templates = {
 
 	"welcome_message":
 	{
-	"text": " Je suis là pour vous aider à trouver les bons produits 👗👖👕👟👠",
-    "quick_replies":
-		[
-      {
-        "content_type":"text",
-        "title": "🎀 Catégories",
-        "payload": "Categories"
-      },
-      {
-        "content_type":"text",
-        "title": " 🔍 Recherche",
-        "payload": "Recherche"
-      }
-		]
+		"setting_type" : "quick_replies",
+		"quick_replies":
+			[
+		  {
+			"content_type":"text",
+			"title": "🎀 Catégories",
+			"payload": "Categories"
+		  },
+		  {
+			"content_type":"text",
+			"title": " 🔍 Recherche",
+			"payload": "Recherche"
+		  }
+			]
 	},
 // catalogue
 
