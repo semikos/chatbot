@@ -5,18 +5,20 @@ let templates = {
 
 	"welcome_message":
 	{
-		"setting_type" : "messages",
-		"quick_replies":
-		[{
-			"content_type":"text",
-			"title": "🎀 Catégories",
-			"payload": "Categories"
-			},
+		"recipient":{
+		"id":"USER_ID"
+		},
+		"message":{
+		"text":"Please share your location:",
+		"quick_replies":[
 			{
-			"content_type":"text",
-			"title": " 🔍 Recherche",
-			"payload": "Recherche"
-		}]
+				"content_type":"text",
+				"title":"Red",
+				"payload":"You Selected Red",
+				"image_url":"http://petersfantastichats.com/img/red.png"
+			}
+		]
+	  }
 	},
 // catalogue
 
