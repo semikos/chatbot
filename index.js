@@ -260,7 +260,7 @@ function facebookDemarre(){
 
 function discussionButtons(){
 	request({
-		url: 'https://graph.facebook.com/v2.6/me/thread_settings',
+		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token: token},
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
