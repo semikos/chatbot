@@ -6,7 +6,7 @@ let templates = {
 	"welcome_message":
 	{
 		"recipient":{
-		"id":"USER_ID"
+		"id":"123456"
 		},
 		"message":{
 		"text":"Please share your location:",
