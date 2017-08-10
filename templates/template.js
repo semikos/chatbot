@@ -119,7 +119,6 @@ let templates = {
 
  let defaulttemplates = {
 	"Menu":{
-		"text" : "Voici les chatbots disponibles",
 		"setting_type" : "call_to_actions",
 		"thread_state" : "existing_thread",
 		"call_to_actions": 
