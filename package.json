@@ -31,7 +31,6 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongodb": "^2.2.31",
-	"facebook-node-sdk": "^0.2.0",
     "mongodb-stitch": "0.0.25",
     "request": "^2.78.0",
 	"mongoose": "^4.11.6"
