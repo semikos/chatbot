@@ -76,6 +76,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
+			getInfo(sender)
 			discussionButtons(sender);
 			continue
 		}
@@ -103,9 +104,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getInfo() {
-	let event = req.body.entry[0].messaging[i]
-	let sender = event.sender.id
+function getInfo(sender) {
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'/first_name',
 		qs: {access_token: token},
