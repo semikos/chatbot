@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
+const facebook = require('facebook-node-sdk')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
 const BotSchema = require('./BotSchema.js')
@@ -65,6 +66,17 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 
 		if (event.message && event.message.text) {
+			let url = "https://graph.facebook.com/v2.6/"+sender+"?fields=first_name,last_name&access_token="+token;
+			facebook.api(url, function(err, data){
+				if(err){
+					console.error(err);
+					res.sendStatus(502);
+					res.end();
+				}
+				else{
+					//Do some stuff with the data object
+				}
+			});
 			let text = event.message.text 
 			if (text === 'Generic') {
 				sendGenericMessage()
@@ -78,7 +90,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-		sendTextMessage(sender, event.postback.payload+" "+req.body['user_name'], token);
+		sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
 		}
