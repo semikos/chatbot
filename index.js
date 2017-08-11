@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
-const mongo = require('mongodb')
+const mongo = require('mongodb').MongoClient
 const assert = require('assert')
 const BotSchema = require('./BotSchema.js')
 
