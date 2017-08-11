@@ -21,9 +21,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
-let event = req.body.entry[0].messaging[i]
-let sender = event.sender.id
+
 app.get('/https://graph.facebook.com/v2.6/'+sender+'?access_token='+token, function(req ,res) {
+	let event = req.body.entry[0].messaging[i]
+	let sender = event.sender.id
 	echo(res);
 })
 
