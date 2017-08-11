@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload+" "+event.sender.name, token);
+			sendTextMessage(sender, event.postback.payload+" "+sender.name, token);
 			discussionButtons(sender);
 			continue
 		}
