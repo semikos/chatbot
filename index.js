@@ -26,26 +26,6 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
 
-app.get('/facebook-search/:id', (req, res) => {
-
-  // you need permission for most of these fields
-  const userFieldSet = 'id, name, about, email';
-
-  const options = {
-    method: 'GET',
-    uri: 'https://graph.facebook.com/v2.8/${req.params.id}',
-    qs: {
-      access_token: token,
-      fields: userFieldSet
-    }
-  };
-  request(options)
-    .then(fbRes => {
-      res.json(fbRes);
-	  console.log(fbRes);
-    })
-})
-
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
     if (req.query['hub.verify_token'] === vtoken) {
@@ -99,6 +79,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
+			console.log(event.sender);
 			discussionButtons(sender);
 			continue
 		}
