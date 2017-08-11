@@ -21,13 +21,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
-
-app.get('/https://graph.facebook.com/v2.6/'+sender+'?access_token='+token, function(req ,res) {
-	let event = req.body.entry[0].messaging[i]
-	let sender = event.sender.id
-	echo(res);
-})
-
 // Index route
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
