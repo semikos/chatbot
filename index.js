@@ -11,7 +11,6 @@ const Templates = require('./templates/template.js')
 const app = express()
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
-const BotSchema = require('./BotSchema.js')
 
 app.set('port', (process.env.PORT || 5000))
 
