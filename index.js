@@ -106,7 +106,7 @@ function sendTextMessage(sender, text) {
 
 function getInfo(sender) {
 	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender+'/first_name',
+		url: 'https://graph.facebook.com/v2.6/'+sender+'?first_name',
 		qs: {access_token: token},
 		method: 'GET'
 	},
