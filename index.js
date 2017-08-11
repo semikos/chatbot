@@ -21,6 +21,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
+let event = req.body.entry[0].messaging[i]
+let sender = event.sender.id
+app.get('/https://graph.facebook.com/v2.6/'+sender+'?access_token='+token, function(req ,res) {
+	echo(res);
+})
+
 // Index route
 app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
@@ -172,7 +178,6 @@ function sendMenuMessage(sender) {
 
 //Send message using API.AI
 function sendApiMessage(event) {
-  
   let sender = event.sender.id;
   let text = event.message.text;
 
@@ -251,8 +256,7 @@ function facebookDemarre(){
 	});
 }
 
-function discussionButtons(sender){
-	
+function discussionButtons(sender){	
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token: token},
