@@ -40,7 +40,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 
-/*var url = "mongodb://localhost:27017/test";
+var url = "mongodb://localhost:27017/test";
 
 var item = {
 	name : "Adecco",
@@ -55,7 +55,7 @@ mongo.connect(url, function (err,db) {
 		console.log(item);
 		db.close();
 	});
-});*/
+});
 
 facebookDemarre();
 
