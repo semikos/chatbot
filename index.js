@@ -9,10 +9,12 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
-const facebook = require('facebook-node-sdk')
+const Facebook = require('facebook-node-sdk')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
 const BotSchema = require('./BotSchema.js')
+
+var facebook = new Facebook({ appID: '224018904787924', secret: 'a147aede2aeda6d327355c3b47195f6f' });
 
 app.set('port', (process.env.PORT || 5000))
 
