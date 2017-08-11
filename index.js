@@ -58,12 +58,10 @@ facebookDemarre();
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
 	facebookMenu();
-	
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-
 		if (event.message && event.message.text) {
 			let text = event.message.text 
 			if (text === 'Generic') {
@@ -104,6 +102,25 @@ function sendTextMessage(sender, text) {
             console.log('Error: ', response.body.error)
         }
     })
+}
+
+function getInfo() {
+	let event = req.body.entry[0].messaging[i]
+	let sender = event.sender.id
+	request({
+		url: 'https://graph.facebook.com/v2.6/'+sender+'/first_name',
+		qs: {access_token: token},
+		method: 'GET'
+	},
+	function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(": Updated.");
+			console.log(response);
+		} else {
+			console.log(": Failed. Need to handle errors.");
+			console.log(body);
+		}
+	});
 }
 
 function sendGenericMessage() {
