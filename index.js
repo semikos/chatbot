@@ -122,7 +122,7 @@ function sendTextMessage(sender, text) {
 
 function getUserInfos(sender) {
 	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender;
+		url: 'https://graph.facebook.com/v2.6/'+sender,
 		qs: {access_token : token},
 		method: 'GET'
 	}, function(err, response, body) {
