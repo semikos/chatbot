@@ -3,10 +3,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const assert = require('assert')
-
-var event = req.body.entry[0].messaging[i]
-var sender = event.sender.id
 var obj = null;
+
+app.get('/get-info', function (req, res) { 
+	var event = req.body.entry[0].messaging[i]
+	var sender = event.sender.id
+
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender,
 		qs: {access_token : token},
@@ -15,6 +17,7 @@ var obj = null;
 		assert.equal(null , err);
 		obj = JSON.parse(body);
 	});
+});
 
 let templates = {
 	// Salutation
