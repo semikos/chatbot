@@ -76,16 +76,6 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		let obj =""
-		request({
-			url: 'https://graph.facebook.com/v2.6/'+sender,
-			qs: {access_token : token},
-			method: 'GET',
-			json: true
-		}, function(err, response, body) {
-			assert.equal(null , err);
-			obj = JSON.parse(response);
-		});
 		if (event.message && event.message.text) {
 			let text = event.message.text 
 			if (text === 'Generic') {
@@ -100,7 +90,17 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, "Salut "+obj['first_name'], token)
+			let obj =""
+			request({
+				url: 'https://graph.facebook.com/v2.6/'+sender,
+				qs: {access_token : token},
+				method: 'GET',
+				json: true
+			}, function(err, response, body) {
+				assert.equal(null , err);
+				obj = JSON.parse(response);
+			});
+			sendTextMessage(sender, "Salut "+obj, token)
 			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
