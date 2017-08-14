@@ -52,7 +52,7 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
-function getAllData (req, res, next) {
+app.get('/get-data', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
@@ -65,10 +65,9 @@ function getAllData (req, res, next) {
 			db.close();
 		})
 	})
-};
+});
 
 facebookDemarre();
-getAllData();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
