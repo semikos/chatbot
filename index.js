@@ -121,7 +121,7 @@ function sendTextMessage(sender, text) {
 
 app.get('/get-info', function (req, res) {
 	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender+'?first_name',
+		url: 'https://graph.facebook.com/v2.6/'+sender,
 		qs: {access_token: token},
 		method: 'GET'
 	},
