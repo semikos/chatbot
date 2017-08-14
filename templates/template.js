@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const assert = require('assert')
 var obj = null;
+const app = express()
 
 app.get('/get-info', function (req, res) { 
 	var event = req.body.entry[0].messaging[i]
