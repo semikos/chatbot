@@ -52,6 +52,21 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
+app.get('/get-data', function(req, res, next) {
+	var resultArray = [];
+	mongo.connect(url, function(err,db) {
+		assert.equal(null, err);
+		var cursor = db.collection(bot-data).find();
+		cursor.forEach(function(doc, err) {
+			assert(null, err);
+			resultArray.push(doc);
+			console.log(doc);
+		}, function (){
+			db.close();
+		})
+	})
+});
+
 facebookDemarre();
 
 // Posting to the webhook and Facebook messenger application.
