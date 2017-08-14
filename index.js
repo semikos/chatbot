@@ -127,8 +127,7 @@ app.get('/get-info', function (req, res) {
 	},
 	function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(": Updated.");
-			console.log(response);
+			console.send(response);
 		} else {
 			console.log(": Failed. Need to handle errors.");
 			console.log(body);
