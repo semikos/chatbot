@@ -119,21 +119,17 @@ function sendTextMessage(sender, text) {
     })
 }
 
-app.get('/get-info', function (req, res) {
+function getUserInfos(sender) {
 	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender,
-		qs: {access_token: token},
+		url: 'https://graph.facebook.com/v2.6/'+sender;
+		qs: {access_token : token},
 		method: 'GET'
-	},
-	function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			console.send(response);
-		} else {
-			console.log(": Failed. Need to handle errors.");
-			console.log(body);
-		}
+	}, function(err, response, body) {
+		assert.equal(null , err);
+		var obj = JSON.parse(body);
+		console.log(obj);
 	});
-});
+}
 
 function sendGenericMessage() {
     request({
