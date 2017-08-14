@@ -1,4 +1,20 @@
 // les templates par defaut en json
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const assert = require('assert')
+
+var event = req.body.entry[0].messaging[i]
+var sender = event.sender.id
+var obj = null;
+	request({
+		url: 'https://graph.facebook.com/v2.6/'+sender,
+		qs: {access_token : token},
+		method: 'GET'
+	}, function(err, response, body) {
+		assert.equal(null , err);
+		obj = JSON.parse(body);
+	});
 
 let templates = {
 	// Salutation
@@ -136,7 +152,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salutations! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salutations"+obj.first_name+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}
@@ -277,5 +293,6 @@ module.exports =
 	templates: templates ,
 	defaulttemplates:defaulttemplates ,
 	payement:payement,
-	feedback:feedback
+	feedback:feedback,
+	getUserInfos:getUserInfos
 };

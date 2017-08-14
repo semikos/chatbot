@@ -9,7 +9,6 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
-const fbgraph = require('fbgraph')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
 
@@ -91,8 +90,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload+"    "+sender, token);
-			getUserInfos(sender);
+			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
 		}
@@ -128,7 +126,7 @@ function getUserInfos(sender) {
 	}, function(err, response, body) {
 		assert.equal(null , err);
 		var obj = JSON.parse(body);
-		console.log(obj);
+		return obj;
 	});
 }
 
