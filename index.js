@@ -90,7 +90,6 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			let obj =""
 			request({
 				url: 'https://graph.facebook.com/v2.6/'+sender,
 				qs: {access_token : token},
@@ -98,9 +97,9 @@ app.post('/webhook/', function (req, res) {
 				json: true
 			}, function(err, response, body) {
 				assert.equal(null , err);
-				obj = JSON.parse(response);
+				var obj = JSON.parse(response);
+				sendTextMessage(sender, "Salut "+obj, token)
 			});
-			sendTextMessage(sender, "Salut "+obj, token)
 			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
