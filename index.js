@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const Templates = require('./templates/template.js')
 const app = express()
+const fbgraph = require('fbgraph')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
 
@@ -119,7 +120,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getInfo(sender) {
+app.get('/get-info', function (req, res) {
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?first_name',
 		qs: {access_token: token},
@@ -134,7 +135,7 @@ function getInfo(sender) {
 			console.log(body);
 		}
 	});
-}
+});
 
 function sendGenericMessage() {
     request({
