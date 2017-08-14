@@ -92,6 +92,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload+"    "+sender, token);
+			getUserInfos(sender);
 			discussionButtons(sender);
 			continue
 		}
