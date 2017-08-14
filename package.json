@@ -34,7 +34,7 @@
 	"fbgraph": "^1.4.1",
     "mongodb-stitch": "0.0.25",
     "request": "^2.78.0",
-	"mongoose": "^4.11.6",
+	"mongoose": "^4.11.6"
   },
   "devDependencies": {}
 }
