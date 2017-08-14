@@ -91,8 +91,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			request({
-				url: 'https://graph.facebook.com/v2.6/'+sender,
-				qs: {access_token : token},
+				url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 				method: 'GET',
 				json: true
 			}, function(err, response, body) {
