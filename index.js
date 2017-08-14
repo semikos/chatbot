@@ -50,7 +50,6 @@ var item = {
 mongo.connect(url, function (err,db) {
 	assert.equal(null, err);
 	console.log(item);
-	db.collection('bot-data').insertOne(item);
 });
 
 app.get('/get-data', function(req, res, next) {
@@ -59,7 +58,7 @@ app.get('/get-data', function(req, res, next) {
 		assert.equal(null, err);
 		var cursor = db.collection('bot-data').find();
 		cursor.forEach(function(doc, err) {
-			assert(null, err);
+			assert.equal(null, err);
 			resultArray.push(doc);
 			console.log(doc);
 		}, function (){
