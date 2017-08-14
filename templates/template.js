@@ -1,23 +1,4 @@
 // les templates par defaut en json
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const assert = require('assert')
-const app = express()
-
-app.get('/get-info', function (req, res) { 
-	var event = req.body.entry[0].messaging[i]
-	var sender = event.sender.id
-
-	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender,
-		qs: {access_token : token},
-		method: 'GET'
-	}, function(err, response, body) {
-		assert.equal(null , err);
-		var obj = JSON.parse(response);
-	});
-});
 
 let templates = {
 	// Salutation
@@ -155,7 +136,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salutations"+obj['first_name']+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salutations! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}
