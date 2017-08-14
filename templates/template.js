@@ -3,7 +3,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const assert = require('assert')
-var obj = null;
 const app = express()
 
 app.get('/get-info', function (req, res) { 
@@ -16,7 +15,7 @@ app.get('/get-info', function (req, res) {
 		method: 'GET'
 	}, function(err, response, body) {
 		assert.equal(null , err);
-		obj = JSON.parse(response);
+		var obj = JSON.parse(response);
 	});
 });
 
