@@ -97,8 +97,7 @@ app.post('/webhook/', function (req, res) {
 				json: true
 			}, function(err, response, body) {
 				assert.equal(null ,err);
-				var obj = JSON.parse(body);
-				sendTextMessage(sender, "Salut "+obj, token)
+				sendTextMessage(sender, "Salut "+body, token)
 			});
 			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
