@@ -50,6 +50,7 @@ var item = {
 mongo.connect(url, function (err,db) {
 	assert.equal(null, err);
 	console.log(item);
+	db.collection('bot-data').insertOne(item);
 });
 
 app.get('/get-data', function(req, res, next) {
