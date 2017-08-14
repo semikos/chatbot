@@ -277,6 +277,5 @@ module.exports =
 	templates: templates ,
 	defaulttemplates:defaulttemplates ,
 	payement:payement,
-	feedback:feedback,
-	getUserInfos:getUserInfos
+	feedback:feedback
 };
