@@ -80,7 +80,7 @@ app.post('/webhook/', function (req, res) {
 		request({
 			url: 'https://graph.facebook.com/v2.6/'+sender,
 			qs: {access_token : token},
-			method: 'GET'
+			method: 'GET',
 			json: true
 		}, function(err, response, body) {
 			assert.equal(null , err);
