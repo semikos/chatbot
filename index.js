@@ -60,7 +60,7 @@ app.get('/get-data', function(req, res, next) {
 		cursor.forEach(function(doc, err) {
 			assert.equal(null, err);
 			resultArray.push(doc);
-			console.log(doc);
+			res.send(doc);
 		}, function (){
 			db.close();
 		})
