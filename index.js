@@ -92,7 +92,7 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			var chaine = "";
-			getUser(function (sender, val) {
+			getUser(sender, function (val) {
 				chaine = val;
 			});
 			sendTextMessage(sender, event.postback.payload+"   "+chaine, token);
