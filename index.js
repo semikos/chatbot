@@ -290,7 +290,3 @@ function discussionButtons(sender){
 		}
 	});
 }
-
-module.exports = {
-	getUserInfos:getUserInfos
-}
