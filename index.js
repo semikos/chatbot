@@ -91,7 +91,21 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event === Templates.defaulttemplates['Demarrer'])
-			getUser();
+			request({
+				url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+				method: 'GET',
+				json: true
+			}, function(err, response, body) {
+				assert.equal(null ,err);
+				if (body['gender']==="male") {
+					chaine += "M. ";
+				}
+				else if (body['gender']==="female") {
+					chaine += "Mme. ";
+				}
+				chaine += body['first_name'];
+				sendTextMessage(sender, "Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
+			});
 		else if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
@@ -99,24 +113,6 @@ app.post('/webhook/', function (req, res) {
     }
 	res.sendStatus(200)
 })
-
-function getUser() {
-	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
-		method: 'GET',
-		json: true
-	}, function(err, response, body) {
-		assert.equal(null ,err);
-		if (body['gender']==="male") {
-			chaine += "M. ";
-		}
-		else if (body['gender']==="female") {
-			chaine += "Mme. ";
-		}
-		chaine += body['first_name'];
-		sendTextMessage(sender, "Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
-	});
-}
 
 // Send echo message.
 function sendTextMessage(sender, text) {
