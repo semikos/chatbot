@@ -69,10 +69,6 @@ app.get('/get-data', function(req, res, next) {
 });
 
 facebookDemarre();
-var chaine = "";
-getUser(function (val) {
-	chaine = val;
-});
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -95,6 +91,10 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
+			var chaine = "";
+			getUser(function (sender, val) {
+				chaine = val;
+			});
 			sendTextMessage(sender, event.postback.payload+"   "+chaine, token);
 			continue
 		}
@@ -122,7 +122,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getUser(callback) {
+function getUser(sender, callback) {
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
