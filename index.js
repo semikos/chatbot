@@ -95,6 +95,7 @@ app.post('/webhook/', function (req, res) {
 			getUser(sender, function (val) {
 				chaine = val;
 			});
+			console.log(chaine);
 			sendTextMessage(sender, event.postback.payload+"   "+chaine, token);
 			continue
 		}
