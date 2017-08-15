@@ -109,11 +109,11 @@ function getUser() {
 			chaine += "M. ";
 		}
 		else if (body['gender']==="female") {
-			chaine += "Mme.";
+			chaine += "Mme. ";
 		}
 		chaine += body['first_name'];
 		console.log(chaine+" haaaaaaaaaaaaaaaaaa")
-		response.send(chaine)
+		return chaine;
 	});
 }
 
