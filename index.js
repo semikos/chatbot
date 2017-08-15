@@ -130,7 +130,7 @@ function getUser(sender, callback) {
 	}, function(err, response, body) {
 		return callback(body['first_name']);
 	});
-}
+});
 
 function sendGenericMessage() {
     request({
