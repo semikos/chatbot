@@ -113,7 +113,7 @@ function getUser() {
 		}
 		chaine += body['first_name'];
 		console.log(chaine+" haaaaaaaaaaaaaaaaaa")
-		return chaine;
+		response.send(chaine)
 	});
 }
 
