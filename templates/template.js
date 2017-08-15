@@ -120,6 +120,15 @@ let templates = {
 
 };
 
+var chaine = request({
+	url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+	method: 'GET',
+	json: true
+}, function(err, response, body) {
+	return body['first_name'];
+});
+
+var chaine ="";
 
  let defaulttemplates = {
 	"Menu":{
@@ -142,13 +151,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut "+ request({
-	url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
-	method: 'GET',
-	json: true
-}, function(err, response, body) {
-	return body['first_name'];
-})+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+Index.getUser(function (val) {chaine = val;})+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

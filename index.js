@@ -91,6 +91,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
+			
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
@@ -116,6 +117,16 @@ function sendTextMessage(sender, text) {
             console.log('Error: ', response.body.error)
         }
     })
+}
+
+function getUser(callback) {
+	request({
+		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+		method: 'GET',
+		json: true
+	}, function(err, response, body) {
+		return callback(body['first_name']);
+	});
 }
 
 function sendGenericMessage() {
@@ -287,4 +298,8 @@ function discussionButtons(sender){
 			console.log(body);
 		}
 	});
+}
+
+module.exports = {
+	getUser:getUser
 }
