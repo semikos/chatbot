@@ -118,7 +118,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getUserInfos(error, function(req, res) {
+function getUserInfos(req) {
 	let event = req.body.entry[0].messaging[i]
 	let sender = event.sender.id
 	
@@ -130,7 +130,7 @@ function getUserInfos(error, function(req, res) {
 		assert.equal(null ,err);
 		return body['first_name'];
 	});
-})
+}
 
 function sendGenericMessage() {
     request({
