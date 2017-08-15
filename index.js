@@ -11,6 +11,7 @@ const app = express()
 const Templates = require('./templates/template.js')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
+var chaine = "";
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -74,8 +75,8 @@ app.post('/webhook/', function (req, res) {
 	facebookMenu();
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
-		let event = req.body.entry[0].messaging[i]
-		let sender = event.sender.id
+		var event = req.body.entry[0].messaging[i]
+		var sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text 
 			if (text === 'Generic') {
@@ -97,6 +98,24 @@ app.post('/webhook/', function (req, res) {
     }
 	res.sendStatus(200)
 })
+
+function getUser() {
+	request({
+		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+		method: 'GET',
+		json: true
+	}, function(err, response, body) {
+		assert.equal(null ,err);
+		if (body['gender']==="male") {
+			chaine += "M. ";
+		}
+		else if (body['gender']==="female") {
+			chaine += "Mme.";
+		}
+		chaine += body['first_name'];
+		return chaine;
+	});
+}
 
 // Send echo message.
 function sendTextMessage(sender, text) {
@@ -184,8 +203,6 @@ function sendMenuMessage(sender) {
 
 //Send message using API.AI
 function sendApiMessage(event) {
-  let sender = event.sender.id;
-  let text = event.message.text;
 
   let apiai = apiaiApp.textRequest(text, {
     sessionId: vtoken // use any arbitrary id
