@@ -99,6 +99,7 @@ app.post('/webhook/', function (req, res) {
 })
 
 function getUser() {
+	console.log("inside method getUser")
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
@@ -112,7 +113,6 @@ function getUser() {
 			chaine += "Mme. ";
 		}
 		chaine += body['first_name'];
-		console.log(chaine+" haaaaaaaaaaaaaaaaaa")
 		return chaine;
 	});
 }
