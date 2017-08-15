@@ -92,7 +92,6 @@ app.post('/webhook/', function (req, res) {
 		}
 		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
-			discussionButtons(sender);
 			continue
 		}
     }
@@ -113,6 +112,7 @@ function getUser() {
 			chaine += "Mme.";
 		}
 		chaine += body['first_name'];
+		console.log(chaine+" haaaaaaaaaaaaaaaaaa")
 		return chaine;
 	});
 }
