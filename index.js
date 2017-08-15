@@ -96,7 +96,6 @@ app.post('/webhook/', function (req, res) {
 				method: 'GET',
 				json: true
 			}, function(err, response, body) {
-				assert.equal(null ,err);
 				if (body['gender']==="male") {
 					chaine += "M. ";
 				}
