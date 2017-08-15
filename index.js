@@ -90,7 +90,9 @@ app.post('/webhook/', function (req, res) {
 			}
 			sendApiMessage(event)
 		}
-		if (event.postback && event.postback.payload) {
+		if (event === Templates.defaulttemplates['Demarrer'])
+			getUser();
+		else if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
@@ -99,7 +101,6 @@ app.post('/webhook/', function (req, res) {
 })
 
 function getUser() {
-	console.log("inside method getUser "+sender)
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
@@ -113,7 +114,7 @@ function getUser() {
 			chaine += "Mme. ";
 		}
 		chaine += body['first_name'];
-		return chaine;
+		sendTextMessage(sender, "Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
 	});
 }
 
