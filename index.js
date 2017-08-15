@@ -72,7 +72,7 @@ facebookDemarre();
 var chaine = "";
 getUser(function (val) {
 	chaine = val;
-}
+});
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
