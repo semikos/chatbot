@@ -1,9 +1,29 @@
 // les templates par defaut en json
-const Index = require('../index.js');
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+var chaine = "";
+
+app.get('/get-user-info',function (req, res) {
+	let event = req.body.entry[0].messaging[i]
+	let sender = event.sender.id
+	
+	request({
+		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+		method: 'GET',
+		json: true
+	}, function(err, response, body) {
+		assert.equal(null ,err);
+		if (body['gender']==="male") {
+			chaine += "M. ";
+		}
+		else if (body['gender']==="female") {
+			chaine += "Mme.";
+		}
+		chaine += body['first_name'];
+	});
+})
 
 let templates = {
 	// Salutation
@@ -141,7 +161,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut "+ Index.getUserInfos +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

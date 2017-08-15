@@ -90,7 +90,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload+"  "+getUserInfos(), token);
+			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
 		}
@@ -116,20 +116,6 @@ function sendTextMessage(sender, text) {
             console.log('Error: ', response.body.error)
         }
     })
-}
-
-function getUserInfos(req) {
-	let event = req.body.entry[0].messaging[i]
-	let sender = event.sender.id
-	
-	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
-		method: 'GET',
-		json: true
-	}, function(err, response, body) {
-		assert.equal(null ,err);
-		return body['first_name'];
-	});
 }
 
 function sendGenericMessage() {
