@@ -96,14 +96,7 @@ app.post('/webhook/', function (req, res) {
 				method: 'GET',
 				json: true
 			}, function(err, response, body) {
-				if (body['gender']==="male") {
-					chaine += "M. ";
-				}
-				else if (body['gender']==="female") {
-					chaine += "Mme. ";
-				}
-				chaine += body['first_name'];
-				sendTextMessage(sender, "Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
+				sendTextMessage(sender, "Salut "+body['first_name']+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
 			});
 		else if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
