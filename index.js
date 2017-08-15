@@ -90,8 +90,8 @@ app.post('/webhook/', function (req, res) {
 			}
 			sendApiMessage(event)
 		}
-		if (event.postback && event.postback.payload) {			
-		qsdqdq
+		if (event.postback && event.postback.payload) {
+			getUser(sender);
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
