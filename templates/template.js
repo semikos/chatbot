@@ -116,10 +116,7 @@ let templates = {
 
 };
 
-var chaine ="";
-Index.getUser(function (val) {
-	chaine = val
-});
+var chaine = Index.getUser;
 
  let defaulttemplates = {
 	"Menu":{
