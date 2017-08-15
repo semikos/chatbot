@@ -1,5 +1,5 @@
 // les templates par defaut en json
-var Index = require('./index.js')
+var Index = require('../index.js')
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
