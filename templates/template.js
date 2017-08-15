@@ -116,8 +116,6 @@ let templates = {
 
 };
 
-var chaine = Index.getUser;
-
  let defaulttemplates = {
 	"Menu":{
 		"setting_type" : "call_to_actions",
@@ -139,7 +137,7 @@ var chaine = Index.getUser;
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut "+chaine+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

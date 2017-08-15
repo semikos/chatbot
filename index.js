@@ -69,6 +69,10 @@ app.get('/get-data', function(req, res, next) {
 });
 
 facebookDemarre();
+var chaine = "";
+getUser(function (val) {
+	chaine = val;
+}
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
@@ -91,8 +95,7 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			
-			sendTextMessage(sender, event.postback.payload, token);
+			sendTextMessage(sender, event.postback.payload+"   "+chaine, token);
 			continue
 		}
     }
@@ -298,8 +301,4 @@ function discussionButtons(sender){
 			console.log(body);
 		}
 	});
-}
-
-module.exports = {
-	getUser:getUser
 }
