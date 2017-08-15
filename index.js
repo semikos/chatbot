@@ -304,7 +304,3 @@ function discussionButtons(sender){
 		}
 	});
 }
-
-module.exports = {
-	getUser:getUser
-}
