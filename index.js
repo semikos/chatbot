@@ -120,7 +120,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getUser(sender) {
+function getUser(sender, callback) {
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
