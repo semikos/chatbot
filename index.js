@@ -90,15 +90,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			sendApiMessage(event)
 		}
-		if (event.postback && event.postback.payload && event == Templates.defaulttemplates['Demarrer']) {
-			request({
-				url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
-				method: 'GET',
-				json: true
-			}, function(err, response, body) {
-				sendTextMessage(sender, "Salut "+body['first_name']+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
-			});
-		}else if (event.postback && event.postback.payload){
+		if (event.postback && event.postback.payload) {
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}

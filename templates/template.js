@@ -120,6 +120,7 @@ let templates = {
 
 };
 
+
  let defaulttemplates = {
 	"Menu":{
 		"setting_type" : "call_to_actions",
@@ -141,11 +142,18 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut ! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+ request({
+	url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+	method: 'GET',
+	json: true
+}, function(err, response, body) {
+	return body['first_name'];
+})+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}
 };
+
 
 let payement =
 {
