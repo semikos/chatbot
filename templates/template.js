@@ -1,4 +1,9 @@
 // les templates par defaut en json
+var Index = require('./index.js')
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
 
 let templates = {
 	// Salutation
@@ -136,7 +141,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salutations! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+ Index.getUserInfos() +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

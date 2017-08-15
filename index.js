@@ -7,8 +7,8 @@ const apiaiApp = require('apiai')(process.env.CLIENT_ACCESS_TOKEN)
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const Templates = require('./templates/template.js')
 const app = express()
+const Templates = require('./templates/template.js')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
 
@@ -90,15 +90,6 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			request({
-				url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
-				method: 'GET',
-				json: true
-			}, function(err, response, body) {
-				assert.equal(null ,err);
-				console.log(body)
-				sendTextMessage(sender, "Salut "+body['first_name'] ,token)
-			});
 			sendTextMessage(sender, event.postback.payload, token);
 			discussionButtons(sender);
 			continue
@@ -127,17 +118,19 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getUserInfos(sender) {
+function getUserInfos(error, function(req, res) {
+	let event = req.body.entry[0].messaging[i]
+	let sender = event.sender.id
+	
 	request({
-		url: 'https://graph.facebook.com/v2.6/'+sender,
-		qs: {access_token : token},
-		method: 'GET'
+		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
+		method: 'GET',
+		json: true
 	}, function(err, response, body) {
-		assert.equal(null , err);
-		var obj = JSON.parse(body);
-		return obj;
+		assert.equal(null ,err);
+		return body['first_name'];
 	});
-}
+})
 
 function sendGenericMessage() {
     request({
@@ -310,4 +303,8 @@ function discussionButtons(sender){
 			console.log(body);
 		}
 	});
+}
+
+module.exports = {
+	getUserInfos:getUserInfos
 }
