@@ -99,7 +99,7 @@ app.post('/webhook/', function (req, res) {
 })
 
 function getUser() {
-	console.log("inside method getUser")
+	console.log("inside method getUser "+sender)
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
