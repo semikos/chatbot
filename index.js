@@ -77,6 +77,7 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
 		var sender = event.sender.id
+		getUser(sender);
 		if (event.message && event.message.text) {
 			var text = event.message.text 
 			if (text === 'Generic') {
@@ -90,8 +91,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			sendApiMessage(event)
 		}
-		if (event.postback && event.postback.payload) {
-			getUser(sender);
+		if (event.postback && event.postback.payload) {			
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
@@ -133,7 +133,6 @@ function getUser(sender) {
 			chaine += "Mme. "
 		}
 		sendTextMessage(sender, "Salut "+chaine+body['first_name']);
-		sendTextMessage(sender, event.postback.payload, token)
 	});
 };
 
