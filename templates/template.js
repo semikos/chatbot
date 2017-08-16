@@ -137,7 +137,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut "+ Index.getX +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+ Index.getX() +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

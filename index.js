@@ -99,7 +99,7 @@ app.post('/webhook/', function (req, res) {
 
 var exports = module.exports = {};
 exports.getX = function () {
-	console.log("inside getX ", x);
+	console.log("inside getX "+ x);
 	return x;
 };
 
