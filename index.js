@@ -120,12 +120,12 @@ function sendTextMessage(sender, text) {
 }
 
 function getUser(sender) {
+	var chaine ="";
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
 		method: 'GET',
 		json: true
 	}, function(err, response, body) {
-		var chaine ="";
 		if (body['gender'] === 'male') {
 			chaine += "M. "
 		}
