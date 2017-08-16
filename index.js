@@ -98,10 +98,10 @@ app.post('/webhook/', function (req, res) {
 })
 
 var exports = module.exports = {};
-exports.getX() = function () {
+exports.getX = function () {
 	console.log("inside getX ", x);
 	return x;
-}
+};
 
 // Send echo message.
 function sendTextMessage(sender, text) {
