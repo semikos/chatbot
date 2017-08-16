@@ -1,5 +1,5 @@
 // les templates par defaut en json
-var Index = require('../index.js');
+var Index = require('./index.js');
 
 let templates = {
 	// Salutation
