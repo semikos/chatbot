@@ -78,12 +78,8 @@ app.post('/webhook/', function (req, res) {
 		var event = req.body.entry[0].messaging[i]
 		var sender = event.sender.id
 		if (event.message && event.message.text) {
-			let text = event.message.text 
-			if (text === 'Generic') {
-				sendGenericMessage()
-				continue
-			}
-			else if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
+			let text = event.message.text
+			if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
 				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
 				sendMenuMessage(sender, event, token)
 				continue
@@ -101,10 +97,10 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-console.log(x);
 function getX() {
+	console.log("inside getX ", x);
 	return x;
-};
+}
 
 // Send echo message.
 function sendTextMessage(sender, text) {
