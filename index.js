@@ -88,7 +88,7 @@ app.post('/webhook/', function (req, res) {
 				sendMenuMessage(sender, event, token)
 				continue
 			}
-			sendApiMessage(event)
+			sendApiMessage(sender, event)
 		}
 		if (event.postback && event.postback.payload) {
 			var x = "";
@@ -206,7 +206,7 @@ function sendMenuMessage(sender) {
 }
 
 //Send message using API.AI
-function sendApiMessage(event) {
+function sendApiMessage(sender,event) {
 	let text = event.message.text 
   let apiai = apiaiApp.textRequest(text, {
     sessionId: vtoken // use any arbitrary id
