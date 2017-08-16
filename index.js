@@ -93,8 +93,8 @@ app.post('/webhook/', function (req, res) {
 			var x = "";
 			getUser(sender, function (result) {
 				x = result;
+				sendTextMessage(sender, event.postback.payload, token);
 			});
-			sendTextMessage(sender, event.postback.payload+"   x:"+x, token);
 			continue
 		}
     }
@@ -135,7 +135,7 @@ function getUser(sender, callback) {
 			chaine += "Mme. "
 		}
 		chaine += body['first_name'];
-		return callback(chaine);
+		callback(chaine);
 	});
 };
 
