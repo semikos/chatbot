@@ -78,7 +78,7 @@ app.post('/webhook/', function (req, res) {
 		var event = req.body.entry[0].messaging[i]
 		var sender = event.sender.id
 		if (event.message && event.message.text) {
-			var text = event.message.text 
+			let text = event.message.text 
 			if (text === 'Generic') {
 				sendGenericMessage()
 				continue
@@ -95,7 +95,7 @@ app.post('/webhook/', function (req, res) {
 			getUser(sender, function(val) {
 				x = val;
 			});
-			sendTextMessage(sender, event.postback.payload+"   "+x, token);
+			sendTextMessage(sender, event.postback.payload+"   x:"+x, token);
 			continue
 		}
     }
@@ -207,7 +207,7 @@ function sendMenuMessage(sender) {
 
 //Send message using API.AI
 function sendApiMessage(event) {
-
+	let text = event.message.text 
   let apiai = apiaiApp.textRequest(text, {
     sessionId: vtoken // use any arbitrary id
   });
