@@ -1,4 +1,5 @@
 // les templates par defaut en json
+const Index = require('../index.js');
 
 let templates = {
 	// Salutation
@@ -136,7 +137,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut"+ Index.x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}

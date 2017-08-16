@@ -309,3 +309,7 @@ function discussionButtons(sender){
 		}
 	});
 }
+
+module.exports = {
+	x:x
+}
