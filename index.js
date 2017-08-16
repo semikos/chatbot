@@ -137,7 +137,8 @@ function getUser(sender, callback) {
 		chaine += body['first_name'];
 		sendTextMessage(sender, "Salut "+chaine);
 		response.on('data', function (chunk) {
-			callback(chunk);
+			chaine = chunk;
+			callback(chaine);
 		});
 	});
 	return callback(chaine);
