@@ -97,7 +97,8 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-function getX() {
+var exports = module.exports {};
+exports.getX() = function () {
 	console.log("inside getX ", x);
 	return x;
 }
@@ -309,8 +310,4 @@ function discussionButtons(sender){
 			console.log(body);
 		}
 	});
-}
-
-module.exports = {
-	getX:getX
 }
