@@ -8,10 +8,15 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+var x="";
+module.exports.getX = function () {
+	console.log("inside getX "+ x);
+	return x;
+};
 const Templates = require('./template.js')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
-var x="";
+;
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -97,10 +102,7 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-module.exports.getX = function () {
-	console.log("inside getX "+ x);
-	return x;
-};
+
 
 // Send echo message.
 function sendTextMessage(sender, text) {
