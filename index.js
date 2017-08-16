@@ -101,6 +101,11 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
+function getX() {
+	console.log(x);
+	return x;
+};
+
 // Send echo message.
 function sendTextMessage(sender, text) {
     let messageData = { text:text }
@@ -311,5 +316,5 @@ function discussionButtons(sender){
 }
 
 module.exports = {
-	x:x
+	getX:getX
 }
