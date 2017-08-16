@@ -91,7 +91,8 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			getUser(sender);
+			var x = getUser(sender);
+			console.log(x);
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
@@ -132,8 +133,10 @@ function getUser(sender) {
 		else if (body['gender'] === 'female') {
 			chaine += "Mme. "
 		}
-		sendTextMessage(sender, "Salut "+chaine+body['first_name']);
+		chaine += body['first_name'];
+		sendTextMessage(sender, "Salut "+chaine);
 	});
+	return chaine;
 };
 
 function sendGenericMessage() {
