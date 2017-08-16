@@ -1,5 +1,4 @@
 // les templates par defaut en json
-const Index = require('../index.js');
 
 let templates = {
 	// Salutation

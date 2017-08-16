@@ -11,7 +11,6 @@ const app = express()
 const Templates = require('./templates/template.js')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
-var chaine = "";
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -69,10 +68,10 @@ app.get('/get-data', function(req, res, next) {
 });
 
 facebookDemarre();
+facebookMenu();
 
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
-	facebookMenu();
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
@@ -91,7 +90,11 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(sender, event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload, token);
+			var x = "";
+			getUser(sender, function (result) {
+				x = result;
+			});
+			sendTextMessage(sender, event.postback.payload+"   x:"+x, token);
 			continue
 		}
     }
@@ -133,6 +136,9 @@ function getUser(sender, callback) {
 		}
 		chaine += body['first_name'];
 		sendTextMessage(sender, "Salut "+chaine);
+		response.on('data', function (chunk) {
+			callback(chaine);
+		});
 	});
 	return callback(chaine);
 };
@@ -288,12 +294,12 @@ function discussionButtons(sender){
 		json: {
 			recipient: {id: sender},
 			message: {
-					"quick_replies": [{
-						"content_type":"text",
-						"title":"Red",
-						"payload":"You Selected Red",
-						"image_url":"http://www.colorcombos.com/colors/FF0000"
-					}]
+				"quick_replies": [{
+					"content_type":"text",
+					"title":"Red",
+					"payload":"You Selected Red",
+					"image_url":"http://www.colorcombos.com/colors/FF0000"
+				}]
 			}
 		}
 	},
