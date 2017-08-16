@@ -95,7 +95,7 @@ app.post('/webhook/', function (req, res) {
 			getUser(sender, function(val) {
 				x = val;
 			});
-			sendTextMessage(sender, event.postback.payload, token);
+			sendTextMessage(sender, event.postback.payload+"   "+x, token);
 			continue
 		}
     }
