@@ -97,8 +97,7 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-var exports = module.exports = {};
-exports.getX = function () {
+module.exports.getX = function () {
 	console.log("inside getX "+ x);
 	return x;
 };
