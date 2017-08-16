@@ -11,6 +11,7 @@ const app = express()
 const Templates = require('./templates/template.js')
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
+var x="";
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -90,7 +91,6 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(sender, event)
 		}
 		if (event.postback && event.postback.payload) {
-			var x = "";
 			getUser(sender, function (result) {
 				x = result;
 				sendTextMessage(sender, event.postback.payload+"  x:"+x, token);
