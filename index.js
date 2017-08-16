@@ -95,7 +95,7 @@ app.post('/webhook/', function (req, res) {
 			getUser(sender, function(val) {
 				x = val;
 			});
-			sendTextMessage(sender, event.postback.payload+"   x:"+x, token);
+			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
     }
@@ -208,27 +208,27 @@ function sendMenuMessage(sender) {
 //Send message using API.AI
 function sendApiMessage(sender,event) {
 	let text = event.message.text 
-  let apiai = apiaiApp.textRequest(text, {
-    sessionId: vtoken // use any arbitrary id
-  });
+	let apiai = apiaiApp.textRequest(text, {
+		sessionId: vtoken // use any arbitrary id
+	});
 
     apiai.on('response', (response) => {
-  let aiText = response.result.fulfillment.speech;
+	let aiText = response.result.fulfillment.speech;
 
     request({
-      url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: token},
-      method: 'POST',
-      json: {
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token: token},
+		method: 'POST',
+		json: {
         recipient: {id: sender},
         message: {text: aiText}
-      }
+		}
     }, (error, response) => {
-      if (error) {
-          console.log('Error sending message: ', error);
-      } else if (response.body.error) {
-          console.log('Error: ', response.body.error);
-      }
+		if (error) {
+			console.log('Error sending message: ', error);
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error);
+		}
     });
 	console.log(aiText)
  });
