@@ -91,10 +91,6 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(sender, event)
 		}
 		if (event.postback && event.postback.payload) {
-			var x = "";
-			getUser(sender, function(val) {
-				x = val;
-			});
 			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
