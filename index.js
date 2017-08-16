@@ -91,9 +91,11 @@ app.post('/webhook/', function (req, res) {
 			sendApiMessage(event)
 		}
 		if (event.postback && event.postback.payload) {
-			var x = getUser(sender);
-			console.log(x);
-			sendTextMessage(sender, event.postback.payload+"  "+x, token);
+			var x = "";
+			getUser(sender, function(val) {
+				x = val;
+			});
+			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
     }
@@ -120,7 +122,7 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function getUser(sender) {
+function getUser(sender, callback) {
 	var chaine ="";
 	request({
 		url: 'https://graph.facebook.com/v2.6/'+sender+'?access_token='+token,
@@ -136,7 +138,7 @@ function getUser(sender) {
 		chaine += body['first_name'];
 		sendTextMessage(sender, "Salut "+chaine);
 	});
-	return chaine;
+	return callback(chaine);
 };
 
 function sendGenericMessage() {
