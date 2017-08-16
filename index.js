@@ -101,8 +101,8 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
+console.log(x);
 function getX() {
-	console.log(x);
 	return x;
 };
 
