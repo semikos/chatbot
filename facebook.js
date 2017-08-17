@@ -46,6 +46,7 @@ function postMessages (req, res) {
 			}
 			else {
 			sendTextMessage(sender, event.postback.payload , token);
+			}
 		}
     }
 	res.sendStatus(200)
