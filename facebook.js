@@ -34,15 +34,17 @@ function postMessages (req, res) {
 			}
 			sendApiMessage(sender, event)
 		}
-		if (event.postback && event.postback.payload === "Demarrer") {
-			var x = "";
-			graphapi.getUser(sender, function (result) {
-				x = result;
-				console.log(x);
-				sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
-			});
-			continue
-		} else {
+		if (event.postback) {
+			if (event.postback.payload === "Demarrer") {
+				var x = "";
+				graphapi.getUser(sender, function (result) {
+					x = result;
+					console.log(x);
+					sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
+				});
+				continue
+			}
+			else {
 			sendTextMessage(sender, event.postback.payload , token);
 		}
     }
