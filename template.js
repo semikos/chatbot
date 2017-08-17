@@ -119,10 +119,12 @@ let templates = {
 
 var y = "";
 y = facebook.getSender
+console.log(y);
 
 var x = "";
 graphapi.getUser(y, function (result) {
 	x = result;
+	console.log(x);
 });
 
  let defaulttemplates = {
