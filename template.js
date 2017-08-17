@@ -148,6 +148,7 @@ graphapi.getUser(y, function (result) {
 	"call_to_actions":
 	[
 		{
+			"type":"Demarrer",
 			"payload":"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]

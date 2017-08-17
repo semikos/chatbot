@@ -34,8 +34,8 @@ function postMessages (req, res) {
 			}
 			sendApiMessage(sender, event)
 		}
-		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload, token);
+		if (event.postback && event.postback.payload && event.postback.type === "Demarrer") {
+			sendTextMessage(sender, " Hello " , token);
 			continue
 		}
     }
