@@ -117,16 +117,6 @@ let templates = {
   }
 };
 
-var y = "";
-y = facebook.getSender
-console.log(y);
-
-var x = "";
-graphapi.getUser(y, function (result) {
-	x = result;
-	console.log(x);
-});
-
  let defaulttemplates = {
 	"Menu":{
 		"setting_type" : "call_to_actions",
@@ -148,8 +138,7 @@ graphapi.getUser(y, function (result) {
 	"call_to_actions":
 	[
 		{
-			"type":"Demarrer",
-			"payload":"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Demarrer"
 		}
 	]
 	}

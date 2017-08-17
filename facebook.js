@@ -34,8 +34,13 @@ function postMessages (req, res) {
 			}
 			sendApiMessage(sender, event)
 		}
-		if (event.postback && event.postback.payload && event.postback.type === "Demarrer") {
-			sendTextMessage(sender, " Hello " , token);
+		if (event.postback && event.postback.payload && event.postback.payload === "Demarrer") {
+			var x = "";
+			graphapi.getUser(sender, function (result) {
+				x = result;
+				console.log(x);
+				sendTextMessage(sender, " Hello "+x , token);
+			});
 			continue
 		}
     }
