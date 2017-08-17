@@ -1,5 +1,7 @@
 'use strict'
 
+var graphapi = require('./graphapi.js')
+var facebook = require ('./facebook.js')
 
 let templates = {
 	// Salutation
@@ -115,6 +117,13 @@ let templates = {
   }
 };
 
+var y = "";
+y = facebook.getSender
+
+var x = "";
+graphapi.getUser(y, function (result) {
+	x = result;
+});
 
  let defaulttemplates = {
 	"Menu":{
@@ -137,7 +146,7 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut ! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}
