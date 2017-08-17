@@ -1,6 +1,7 @@
-// les templates par defaut en json
-var Index = require('./index');
-console.log(Index);
+'use strict'
+
+var graphapi = require('./graphapi.js')
+
 let templates = {
 	// Salutation
 
@@ -113,8 +114,12 @@ let templates = {
 
  	 ]
   }
-
 };
+
+var x = "";
+graphapi.getUser(sender, function (result) {
+	x = result;
+});
 
  let defaulttemplates = {
 	"Menu":{
@@ -137,12 +142,11 @@ let templates = {
 	"call_to_actions":
 	[
 		{
-			"payload":"Salut "+ Index.getX()+"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
+			"payload":"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."
 		}
 	]
 	}
 };
-
 
 let payement =
 {
