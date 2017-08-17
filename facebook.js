@@ -35,7 +35,7 @@ function postMessages (req, res) {
 			sendApiMessage(sender, event)
 		}
 		if (event.postback && event.postback.payload) {
-			sendTextMessage(sender, event.postback.payload+"  x:"+x, token);
+			sendTextMessage(sender, event.postback.payload, token);
 			continue
 		}
     }
