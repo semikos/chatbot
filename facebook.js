@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
+var Templates = require('./template.js')
 var graphapi = require('./graphapi.js')
 
 // Posting to the webhook and Facebook messenger application.
@@ -16,7 +17,6 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
 		var sender = event.sender.id
-		var Templates = require('./template.js')
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
