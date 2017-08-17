@@ -1,4 +1,6 @@
 ﻿'use strict'
+const token = process.env.FB_PAGE_TOKEN
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
