@@ -20,8 +20,7 @@ function VerificationToken(req, res) {
 	res.send('token='+token+'vtoken:'+vtoken)
 }
 
-// Posting to the webhook and Facebook messenger application.
-app.post('/webhook/', function (req, res) {
+function postMessages (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
@@ -41,7 +40,7 @@ app.post('/webhook/', function (req, res) {
 		}
     }
 	res.sendStatus(200)
-})
+}
 
 var exports = module.exports = {};
 exports.getSender = function () {
@@ -221,5 +220,6 @@ module.exports = {
 	discussionButtons:discussionButtons,
 	facebookDemarre:facebookDemarre,
 	facebookMenu:facebookMenu,
-	VerificationToken:VerificationToken
+	VerificationToken:VerificationToken,
+	postMessages:postMessages
 }

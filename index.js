@@ -26,6 +26,9 @@ app.get('/', function (req, res) {
 // for Facebook verification
 app.get('/webhook/', facebook.VerificationToken)
 
+// Posting to the webhook and Facebook messenger application.
+app.post('/webhook/', facebook.postMessages)
+
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
