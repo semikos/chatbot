@@ -49,9 +49,6 @@ let templates = {
 	
 module.exports =
 {
-	helpvideo:helpvideo,
 	templates: templates ,
-	defaulttemplates:defaulttemplates ,
-	payement:payement,
-	feedback:feedback
+	defaulttemplates:defaulttemplates
 };
