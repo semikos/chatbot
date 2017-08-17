@@ -24,13 +24,7 @@ app.get('/', function (req, res) {
 })
 
 // for Facebook verification
-app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === vtoken) {
-        res.send(req.query['hub.challenge'])
-    }
-    // res.send('No sir')
-	res.send('token='+token+'vtoken:'+vtoken)
-})
+app.get('/webhook/', facebook.VerificationToken)
 
 // Spin up the server
 app.listen(app.get('port'), function() {

@@ -11,6 +11,15 @@ const app = express()
 var Templates = require('./template.js')
 var graphapi = require('./graphapi.js')
 
+
+function VerificationToken(req, res) {
+    if (req.query['hub.verify_token'] === vtoken) {
+        res.send(req.query['hub.challenge'])
+    }
+    // res.send('No sir')
+	res.send('token='+token+'vtoken:'+vtoken)
+}
+
 // Posting to the webhook and Facebook messenger application.
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -212,4 +221,5 @@ module.exports = {
 	discussionButtons:discussionButtons,
 	facebookDemarre:facebookDemarre,
 	facebookMenu:facebookMenu
+	VerificationToken:VerificationToken
 }
