@@ -118,7 +118,7 @@ let templates = {
 };
 
 var y = "";
-y = facebook.getSender()
+y = facebook.getSender
 
 var x = "";
 graphapi.getUser(y, function (result) {
