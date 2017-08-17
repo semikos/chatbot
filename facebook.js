@@ -34,6 +34,11 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
+var exports = module.exports = {};
+exports.getSender = function () {
+	return sender;
+}
+
 // Send echo message.
 function sendTextMessage(sender, text) {
     let messageData = { text:text }

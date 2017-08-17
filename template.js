@@ -1,6 +1,7 @@
 'use strict'
 
 var graphapi = require('./graphapi.js')
+var facebook = require ('./facebook.js')
 
 let templates = {
 	// Salutation
@@ -116,8 +117,11 @@ let templates = {
   }
 };
 
+var y = "";
+y = facebook.getSender()
+
 var x = "";
-graphapi.getUser(sender, function (result) {
+graphapi.getUser(y, function (result) {
 	x = result;
 });
 
