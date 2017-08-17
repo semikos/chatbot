@@ -7,7 +7,7 @@ const request = require('request')
 const app = express()
 const assert = require('assert')
 
-var facebook = require('facebook.js')
+var facebook = require('./facebook.js')
 
 
 app.set('port', (process.env.PORT || 5000))
