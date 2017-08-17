@@ -220,6 +220,6 @@ function discussionButtons(sender){
 module.exports = {
 	discussionButtons:discussionButtons,
 	facebookDemarre:facebookDemarre,
-	facebookMenu:facebookMenu
+	facebookMenu:facebookMenu,
 	VerificationToken:VerificationToken
 }
