@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a chat bot')
 })
 
-// for Facebook verification
+// For Facebook verification
 app.get('/webhook/', facebook.VerificationToken)
 
 // Posting to the webhook and Facebook messenger application.
