@@ -34,7 +34,6 @@ function postMessages (req, res) {
 			}
 			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
-				sendApiMessage(sender, event.postback.title, token);
 			}
 			sendApiMessage(sender, event)
 		}
