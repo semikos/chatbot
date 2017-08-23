@@ -32,6 +32,9 @@ function postMessages (req, res) {
 				sendMenuMessage(sender, event, token)
 				continue
 			}
+			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
+				sendMusicMenu(sender, event, token);
+			}
 			sendApiMessage(sender, event)
 		}
 		if (event.postback) {
@@ -225,6 +228,42 @@ function discussionButtons(sender){
 		}
 	});
 }
+
+function sendMusicMessage(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Record Bird",
+                    "image_url":"https://www.recordbird.com/img/ios-landingpage/mainpic.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Choose",
+						"payload": "Record Bird"
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 
 module.exports = {
 	discussionButtons:discussionButtons,
