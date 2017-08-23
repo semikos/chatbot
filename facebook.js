@@ -34,7 +34,6 @@ function postMessages (req, res) {
 			}
 			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
-				sendApiMessage(sender, event.postback.title, token);
 				continue
 			}
 			sendApiMessage(sender, event)
@@ -243,7 +242,7 @@ function sendMusicMenu(sender) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Record Bird",
-						"payload": "Record Bird: BOT qui te pushe des articles et les nouveaux sons de tes artistes préféres."
+						"payload": sendTextMessage(sender, "Record Bird", token)
                     }],
                 }]
             }
