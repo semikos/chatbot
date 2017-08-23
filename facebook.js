@@ -36,7 +36,7 @@ function postMessages (req, res) {
 				sendMusicMenu(sender, event, token);
 				continue
 			}
-			sendApiMessage(sender, text)
+			sendApiMessage(sender, event)
 		}
 		if (event.postback) {
 			if (event.postback.payload === "Demarrer") {
