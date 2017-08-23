@@ -34,8 +34,9 @@ function postMessages (req, res) {
 			}
 			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
+				continue
 			}
-			sendApiMessage(sender, event)
+			sendApiMessage(sender, text)
 		}
 		if (event.postback) {
 			if (event.postback.payload === "Demarrer") {
