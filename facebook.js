@@ -229,7 +229,7 @@ function discussionButtons(sender){
 	});
 }
 
-function sendMusicMessage(sender) {
+function sendMusicMenu(sender) {
     let messageData = {
         "attachment": {
             "type": "template",
