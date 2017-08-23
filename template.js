@@ -127,6 +127,10 @@ let templates = {
 				"type":"postback",
 				"title":"Help",
 				"payload":"Veuillez ecrire Menu ou Help pour plus d informations."
+			}, {
+				"type":"postback",
+				"title": "Menu",
+				"payload": "veuillez taper le nom d'un domaine parmis les suivants:\n 🎶 Musique ️🎶 \n 🎡 lifestyle 🎡 \n 🎥 film/serie 🎥 \n ⛱ sortie ⛱"
 			}]
 	},
 	"Demarrer":{
