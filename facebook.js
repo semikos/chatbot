@@ -241,7 +241,7 @@ function sendMusicMenu(sender) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Record Bird",
-						"payload": ""
+						"payload": "Record Bird: BOT qui te pushe des articles et les nouveaux sons de tes artistes préféres."
                     }],
                 }]
             }
