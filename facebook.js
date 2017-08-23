@@ -41,7 +41,7 @@ function postMessages (req, res) {
 					x = result;
 					console.log(x);
 					sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions.", token);
-					sendTextMessage(sender,"Pour continuer, veuillez taper le nom d'un domaine parmis les suivants: musique, lifestyle, film/serie, sortie.")
+					sendTextMessage(sender,"Pour continuer, veuillez taper le nom d'un domaine parmis les suivants: 🎶 Musique ️🎶 \n 🎡 lifestyle 🎡 \n 🎥 film/serie 🎥 \n ⛱ sortie ⛱")
 				});
 				continue
 			}
