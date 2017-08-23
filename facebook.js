@@ -239,9 +239,8 @@ function sendMusicMenu(sender) {
                     "title": "Record Bird",
                     "image_url":"https://www.recordbird.com/img/ios-landingpage/mainpic.png",
                     "buttons": [{
-                        "type": "postback",
-                        "title": "Choose",
-						"payload": "Record Bird"
+                        "type": "text",
+                        "title": "Record Bird"
                     }],
                 }]
             }
