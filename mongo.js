@@ -16,15 +16,7 @@ var item = {
 
 mongo.connect(url, function (err,db) {
 	assert.equal(null, err);
-	var cursor = db.collection('user-data').find();
-		cursor.forEach(function(err, doc) {
-			assert.equal(null, err);
-			resultArray.push(doc);
-			res.send(doc);
-			console.log(doc)
-		}, function (){
-			db.close();
-		})
+	console.log(item);
 });
 
 app.get('/get-data', function(req, res, next) {
