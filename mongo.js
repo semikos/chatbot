@@ -33,3 +33,14 @@ app.get('/get-data', function(req, res, next) {
 		})
 	})
 });
+
+var exports = module.exports = {};
+exports.addUser = function (user) {
+	mongo.connect(url, function (err, db) {
+		assert.equal(null, err);
+		db.collection('user-data').insert(user, function() {
+			db.close();
+		});
+	});
+}
+

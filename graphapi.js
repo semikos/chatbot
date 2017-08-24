@@ -24,6 +24,7 @@ exports.getUser = function (sender, callback) {
 			chaine += "Mme. "
 		}
 		chaine += body['first_name'];
+		mongo.addUser(body);
 		callback(chaine);
 	});
 };
