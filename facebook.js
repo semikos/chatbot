@@ -27,7 +27,11 @@ function VerificationToken(req, res) {
 
 function postMessages (req, res) {
 	//Scheduled Messages
-		var j = schedule.scheduleJob('00 52 * * *', function(){
+	var rule = new schedule.RecurrenceRule();
+	rule.dayOfWeek = 1;
+	rule.hour = 8;
+	rule.minute = 0;
+	var j = schedule.scheduleJob(rule, function(){
 		var resultArray = [];
 		mongo.connect(url, function(err,db) {
 			assert.equal(null, err);
