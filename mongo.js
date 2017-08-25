@@ -29,21 +29,7 @@ app.get('/get-data', function(req, res, next) {
 		var cursor = db.collection('user-data').find();
 		cursor.forEach(function(doc, err) {
 			assert.equal(null, err);
-			request({
-				url: 'https://graph.facebook.com/v2.6/me/messages',
-				qs: {access_token:token},
-				method: 'POST',
-				json: {
-					recipient: {id:doc['id']},
-					message: "Hello",
-				}
-			}, function(error, response, body) {
-				if (error) {
-					console.log('Error sending messages: ', error)
-				} else if (response.body.error) {
-					console.log('Error: ', response.body.error)
-				}
-			})
+			fb.sendTextMessage(doc['id'], "Hello" ,token)
 		}, function (){
 			db.close();
 		})
