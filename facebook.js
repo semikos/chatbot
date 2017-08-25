@@ -7,6 +7,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+const mongo = require('mongodb').MongoClient;
+const assert = require('assert')
+const schedule = require('node-schedule')
+
+var url = "mongodb://chatbotcybex:chatbotcybex123@bot-shard-00-00-ccjjw.mongodb.net:27017,bot-shard-00-01-ccjjw.mongodb.net:27017,bot-shard-00-02-ccjjw.mongodb.net:27017/bots?ssl=true&replicaSet=Bot-shard-0&authSource=admin";
 
 var Templates = require('./template.js')
 var graphapi = require('./graphapi.js')
@@ -21,6 +26,21 @@ function VerificationToken(req, res) {
 }
 
 function postMessages (req, res) {
+	//Scheduled Messages
+		var j = schedule.scheduleJob('00 40 * * *', function(){
+		var resultArray = [];
+		mongo.connect(url, function(err,db) {
+			assert.equal(null, err);
+			var cursor = db.collection('user-data').find();
+			cursor.forEach(function(err, doc) {
+				assert.equal(null, err);
+				sendTextMessage(doc['id'], "Hello" ,token)
+			}, function (){
+				db.close();
+			})
+		})
+	});
+	
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
