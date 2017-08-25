@@ -27,7 +27,7 @@ app.get('/get-data', function(req, res, next) {
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
 		var cursor = db.collection('user-data').find();
-		cursor.forEach(function(doc, err) {
+		cursor.forEach(function(err, doc) {
 			assert.equal(null, err);
 			fb.sendTextMessage(doc['id'], "Hello" ,token)
 		}, function (){
