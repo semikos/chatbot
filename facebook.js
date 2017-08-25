@@ -56,10 +56,13 @@ function postMessages (req, res) {
 	res.sendStatus(200)
 }
 
-var exports = module.exports = {};
+var exports = module.exports = {
+	sendTextMessage:sendTextMessage
+};
 exports.getSender = function () {
 	return sender;
 }
+
 
 // Send echo message.
 function sendTextMessage(sender, text) {
