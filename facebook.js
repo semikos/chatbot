@@ -27,14 +27,15 @@ function VerificationToken(req, res) {
 
 function postMessages (req, res) {
 	//Scheduled Messages
-		var j = schedule.scheduleJob('00 40 * * *', function(){
+		var j = schedule.scheduleJob('00 52 * * *', function(){
 		var resultArray = [];
 		mongo.connect(url, function(err,db) {
 			assert.equal(null, err);
 			var cursor = db.collection('user-data').find();
 			cursor.forEach(function(err, doc) {
 				assert.equal(null, err);
-				sendTextMessage(doc['id'], "Hello" ,token)
+				sendTextMessage(doc['id'], "Hello" ,token);
+				console.log(doc['id']+ "     Hello");
 			}, function (){
 				db.close();
 			})

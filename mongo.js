@@ -1,13 +1,10 @@
 ﻿'use strict'
-const token = process.env.FB_PAGE_TOKEN
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const mongo = require('mongodb').MongoClient;
 const assert = require('assert')
-const fb = require('./facebook.js');
 
 var url = "mongodb://chatbotcybex:chatbotcybex123@bot-shard-00-00-ccjjw.mongodb.net:27017,bot-shard-00-01-ccjjw.mongodb.net:27017,bot-shard-00-02-ccjjw.mongodb.net:27017/bots?ssl=true&replicaSet=Bot-shard-0&authSource=admin";
 
@@ -27,9 +24,10 @@ app.get('/get-data', function(req, res, next) {
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
 		var cursor = db.collection('user-data').find();
-		cursor.forEach(function(err, doc) {
+		cursor.forEach(function(doc, err) {
 			assert.equal(null, err);
-			fb.sendTextMessage(doc['id'], "Hello" ,token)
+			resultArray.push(doc);
+			res.send(doc);
 		}, function (){
 			db.close();
 		})
