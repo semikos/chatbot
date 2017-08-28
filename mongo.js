@@ -25,7 +25,6 @@ app.post('/get-data/', function(req, res, next) {
 		assert.equal(null, err);
 		var cursor = db.collection('user-data').find();
 		cursor.forEach(function(err, doc) {
-			assert.equal(null, err);
 			resultArray.push(doc);
 			res.send(doc);
 			console.log(doc)
