@@ -92,12 +92,8 @@ exports.getSender = function () {
 
 function stockUser(user) {
 	request({
-        url: 'https://graph.facebook.com/v2.6/'+user+'/',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:user}
-        }
+        url: 'https://graph.facebook.com/v2.6/'+user+'?access_token='+token,
+        method: 'GET'
     }, function(error, response, body) {
         if (error) {
             console.log('Error sending messages: ', error)
