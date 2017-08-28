@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const mongo = require('mongodb').MongoClient;
+const mongoJS = require('./mongo.js');
 const assert = require('assert')
 const schedule = require('node-schedule')
 
@@ -45,7 +46,7 @@ function postMessages (req, res) {
 			})
 		})
 	});
-	
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
@@ -68,6 +69,7 @@ function postMessages (req, res) {
 				var x = "";
 				graphapi.getUser(sender, function (result) {
 					x = result;
+					stockUser(sender);
 					console.log(x);
 					sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."+"\n"+"Pour continuer, veuillez taper le nom d'un domaine parmis les suivants:\n 🎶 Musique ️🎶 \n 🎡 lifestyle 🎡 \n 🎥 film/serie 🎥 \n ⛱ sortie ⛱", token);
 				});
@@ -88,6 +90,23 @@ exports.getSender = function () {
 	return sender;
 }
 
+function stockUser(user) {
+	request({
+        url: 'https://graph.facebook.com/v2.6/'+user+'/',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:user}
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		mongoJS.addUser(body);
+    })
+}
 
 // Send echo message.
 function sendTextMessage(sender, text) {

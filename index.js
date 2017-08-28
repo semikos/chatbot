@@ -40,8 +40,10 @@ var url = "mongodb://chatbotcybex:chatbotcybex123@bot-shard-00-00-ccjjw.mongodb.
 app.get('/getdata', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
+		assert.equal(null, err);
 		var cursor = db.collection('user-data').find();
 		cursor.forEach(function(err, doc) {
+			assert.equal(null, err);
 			resultArray.push(doc);
 			res.send(doc);
 			console.log(doc)
