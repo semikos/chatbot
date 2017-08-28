@@ -36,7 +36,7 @@ function postMessages (req, res) {
 		var resultArray = [];
 		mongo.connect(url, function(err,db) {
 			assert.equal(null, err);
-			var cursor = db.collection('bot-data').find();
+			var cursor = db.collection('user-data').find();
 			cursor.forEach(function(err, doc) {
 				sendTextMessage(doc['id'], "Hello" ,token);
 				console.log(doc+ "  Hello");

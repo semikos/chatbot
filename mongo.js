@@ -19,8 +19,6 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
-
-
 var exports = module.exports = {};
 exports.addUser = function (user) {
 	mongo.connect(url, function (err, db) {

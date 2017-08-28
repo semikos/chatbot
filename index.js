@@ -41,15 +41,13 @@ app.get('/getdata', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
-		var cursor = db.collection('bot-data').find();
-		cursor.forEach(function(err, doc) {
-			assert.equal(null, err);
-			resultArray.push(doc);
-			res.send(doc);
-			console.log(doc)
-		}, function (){
-			db.close();
-		})
+		
+		var collection = db.collection('user-data');
+		collection.find({}).toArray(function(err, docs) {
+		assert.equal(err, null);
+		console.log("Found the following records");
+		console.dir(docs);
+	  });
 	})
 });
 
