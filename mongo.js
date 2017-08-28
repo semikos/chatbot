@@ -19,19 +19,7 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
-app.get('/getdata', function(req, res, next) {
-	var resultArray = [];
-	mongo.connect(url, function(err,db) {
-		var cursor = db.collection('user-data').find();
-		cursor.forEach(function(err, doc) {
-			resultArray.push(doc);
-			res.send(doc);
-			console.log(doc)
-		}, function (){
-			db.close();
-		})
-	})
-});
+
 
 var exports = module.exports = {};
 exports.addUser = function (user) {
