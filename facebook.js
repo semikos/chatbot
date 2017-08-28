@@ -99,6 +99,7 @@ function stockUser(user) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+		console.dir(body['id'])
 		mongoJS.addUser(body);
     })
 }

@@ -23,7 +23,7 @@ var exports = module.exports = {};
 exports.addUser = function (user) {
 	mongo.connect(url, function (err, db) {
 		assert.equal(null, err);
-		db.collection('user-data').insert(user, function() {
+		db.collection('user-data').insertOne(user, function() {
 			db.close();
 		});
 	});
