@@ -41,7 +41,7 @@ app.get('/getdata', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
-		var cursor = db.collection('user-data').find();
+		var cursor = db.collection('bot-data').find();
 		cursor.forEach(function(err, doc) {
 			assert.equal(null, err);
 			resultArray.push(doc);
