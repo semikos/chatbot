@@ -19,10 +19,9 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
-app.post('/get-data/', function(req, res, next) {
+app.get('/get-data/', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
-		assert.equal(null, err);
 		var cursor = db.collection('user-data').find();
 		cursor.forEach(function(err, doc) {
 			resultArray.push(doc);
