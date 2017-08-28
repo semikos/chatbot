@@ -42,7 +42,7 @@ function postMessages (req, res) {
 				sendTextMessage(doc['id'], "Hello" ,token);
 				console.log(doc['id']+ "     Hello");
 			}, function (){
-				db.close();
+				
 			})
 		})
 	});
