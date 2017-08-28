@@ -19,7 +19,7 @@ mongo.connect(url, function (err,db) {
 	console.log(item);
 });
 
-app.get('/get-data/', function(req, res, next) {
+app.post('/get-data/', function(req, res, next) {
 	var resultArray = [];
 	mongo.connect(url, function(err,db) {
 		assert.equal(null, err);
