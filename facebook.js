@@ -38,15 +38,14 @@ function postMessages (req, res) {
 			assert.equal(null, err);
 			var cursor = db.collection('user-data').find();
 			cursor.forEach(function(err, doc) {
-				assert.equal(null, err);
 				sendTextMessage(doc['id'], "Hello" ,token);
-				console.log(doc['id']+ "     Hello");
+				console.log(doc+ "  Hello");
 			}, function (){
 				
 			})
 		})
 	});
-	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ //
+	// \\\\\\\\\\\\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\\\\\\\\\\\\ //
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
