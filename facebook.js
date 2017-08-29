@@ -53,13 +53,16 @@ function postMessages (req, res) {
 		var sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)
-				|| (text.toUpperCase().indexOf('neuf'.toUpperCase()) !== -1) || (text.toUpperCase().indexOf('bot'.toUpperCase()) !== -1)) {
+			if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)) {
 				sendMenuMessage(sender, event, token)
 				continue
 			}
 			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
+				continue
+			}
+			if (text.toUpperCase().indexOf('film'.toUpperCase()) !== -1  ||  text.toUpperCase().indexOf('serie'.toUpperCase()) !== -1 ) {
+				sendMoviesMenu(sender, event, token);
 				continue
 			}
 			sendApiMessage(sender, event)
@@ -310,6 +313,40 @@ function sendMusicMenu(sender) {
     })
 }
 
+function sendMoviesMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Movie Finder",
+                    "image_url":"https://botlist.co/system/BotList/Bot/logos/000/002/620/medium/submission1325iKVhxx.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Record Bird",
+						"payload": "Movie Finder: BOT qui sélectionne les films que tu vas regarder ce soir en fonction de tes critères personnels et de tes préférences."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
 
 module.exports = {
 	discussionButtons:discussionButtons,
