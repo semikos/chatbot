@@ -59,22 +59,18 @@ function postMessages (req, res) {
 			}
 			else if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
-				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
 			else if (text.toUpperCase().indexOf('film'.toUpperCase()) !== -1  ||  text.toUpperCase().indexOf('serie'.toUpperCase()) !== -1 ) {
 				sendMoviesMenu(sender, event, token);
-				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
 			else if (text.toUpperCase().indexOf('sortie'.toUpperCase()) !== -1) {
 				sendSortiesMenu(sender, event, token);
-				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
 			else if (text.toUpperCase().indexOf('lifestyle'.toUpperCase()) !== -1) {
 				sendLifestyleMenu(sender, event, token);
-				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
 			sendApiMessage(sender, event, token)
@@ -330,6 +326,7 @@ function sendMusicMenu(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
     })
 }
 
@@ -365,6 +362,7 @@ function sendMoviesMenu(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
     })
 }
 
@@ -400,6 +398,7 @@ function sendLifestyleMenu(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
     })
 }
 
@@ -435,6 +434,7 @@ function sendSortiesMenu(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
     })
 }
 
