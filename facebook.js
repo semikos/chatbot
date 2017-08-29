@@ -65,6 +65,14 @@ function postMessages (req, res) {
 				sendMoviesMenu(sender, event, token);
 				continue
 			}
+			if (text.toUpperCase().indexOf('sortie'.toUpperCase()) !== -1) {
+				sendSortiesMenu(sender, event, token);
+				continue
+			}
+			if (text.toUpperCase().indexOf('lifestyle'.toUpperCase()) !== -1) {
+				sendLifestyleMenu(sender, event, token);
+				continue
+			}
 			sendApiMessage(sender, event)
 		}
 		if (event.postback) {
