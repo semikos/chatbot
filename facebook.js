@@ -57,23 +57,27 @@ function postMessages (req, res) {
 				sendMenuMessage(sender, event, token)
 				continue
 			}
-			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
+			else if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
+				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
-			if (text.toUpperCase().indexOf('film'.toUpperCase()) !== -1  ||  text.toUpperCase().indexOf('serie'.toUpperCase()) !== -1 ) {
+			else if (text.toUpperCase().indexOf('film'.toUpperCase()) !== -1  ||  text.toUpperCase().indexOf('serie'.toUpperCase()) !== -1 ) {
 				sendMoviesMenu(sender, event, token);
+				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
-			if (text.toUpperCase().indexOf('sortie'.toUpperCase()) !== -1) {
+			else if (text.toUpperCase().indexOf('sortie'.toUpperCase()) !== -1) {
 				sendSortiesMenu(sender, event, token);
+				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
-			if (text.toUpperCase().indexOf('lifestyle'.toUpperCase()) !== -1) {
+			else if (text.toUpperCase().indexOf('lifestyle'.toUpperCase()) !== -1) {
 				sendLifestyleMenu(sender, event, token);
+				sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
 				continue
 			}
-			sendApiMessage(sender, event)
+			sendApiMessage(sender, event, token)
 		}
 		if (event.postback) {
 			if (event.postback.payload === "Demarrer") {
