@@ -47,6 +47,7 @@ app.get('/getdata', function(req, res, next) {
 			assert.equal(err, null);
 			console.log("Found the following records");
 			console.dir(docs);
+			res.send(docs);
 		});
 	})
 });
