@@ -45,22 +45,18 @@ app.get('/getdata', function(req, res, next) {
 		var collection = db.collection('user-data');
 		collection.deleteOne({ _id : '59a3e50e6139a90004a0ad4e' }, function(err, result) {
 			assert.equal(err, null);
-			assert.equal(1, result.result.n);
 			console.log("Removed the document with the field a equal to 3");
 		});
 		collection.deleteOne({ _id : '59a3e64b0176560004a4a856' }, function(err, result) {
 			assert.equal(err, null);
-			assert.equal(1, result.result.n);
 			console.log("Removed the document with the field a equal to 3");
 		});
 		collection.deleteOne({ _id : '59a3e50e6139a90004a0ad4d' }, function(err, result) {
 			assert.equal(err, null);
-			assert.equal(1, result.result.n);
 			console.log("Removed the document with the field a equal to 3");
 		});
 		collection.deleteOne({ _id : '59a3e64b0176560004a4a855' }, function(err, result) {
 			assert.equal(err, null);
-			assert.equal(1, result.result.n);
 			console.log("Removed the document with the field a equal to 3");
 		});
 		collection.find({}).toArray(function(err, docs) {
