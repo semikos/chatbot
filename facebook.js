@@ -292,6 +292,14 @@ function sendMusicMenu(sender) {
                         "title": "Record Bird",
 						"payload": "Record Bird: BOT qui te pushe des articles et les nouveaux sons de tes artistes préféres."
                     }],
+                },{
+                    "title": "Soulection",
+                    "image_url":"https://botlist.co/system/BotList/Bot/logos/000/002/353/medium/soulection.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Soulection",
+						"payload": "Soulection: BOT qui t'aide à trouver les meilleurs plans du label."
+                    }],
                 }]
             }
         }
@@ -324,8 +332,78 @@ function sendMoviesMenu(sender) {
                     "image_url":"https://botlist.co/system/BotList/Bot/logos/000/002/620/medium/submission1325iKVhxx.png",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Record Bird",
+                        "title": "Movie Finder",
 						"payload": "Movie Finder: BOT qui sélectionne les films que tu vas regarder ce soir en fonction de tes critères personnels et de tes préférences."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function sendLifestyleMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Gidi",
+                    "image_url":"https://botlist.co/system/BotList/Bot/logos/000/000/060/medium/14542471_938663562906261_5034685899454906169_o.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Gidi",
+						"payload": "Gidi: BOT qui t'aide à trouver le meilleur cadeau pour ses proches en se basant sur :Occasion, Age, Budget, Passion, Intérêts etc."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function sendSortiesMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "SURE",
+                    "image_url":"https://botlist.co/system/BotList/Bot/logos/000/000/613/medium/Profile.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "SURE",
+						"payload": "SURE: BOT qui classe les meilleurs plans restaurants en fonction du nombre de fois où le lieu a été publié sur Instagram."
                     }],
                 }]
             }
