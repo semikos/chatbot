@@ -130,7 +130,7 @@ let templates = {
 			}, {
 				"type":"postback",
 				"title": "Menu",
-				"payload": "veuillez taper le nom d'un domaine parmis les suivants:\n 🎶 Musique ️🎶 \n 🎡 lifestyle 🎡 \n 🎥 film/serie 🎥 \n ⛱ sortie ⛱"
+				"payload": "Veuillez taper le nom d'un domaine parmis les suivants:\n 📺 Media 📺 \n 📰 Serviciel 📰 \n ️🎭 Divertissement ️🎭 \n 🛍️ E-commerce 🛍️"
 			}]
 	},
 	"Demarrer":{

@@ -82,7 +82,7 @@ function postMessages (req, res) {
 					x = result;
 					stockUser(sender);
 					console.log(x);
-					sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."+"\n"+"Pour continuer, veuillez taper le nom d'un domaine parmis les suivants:\n 🎶 Musique ️🎶 \n 🎡 lifestyle 🎡 \n 🎥 film/serie 🎥 \n ⛱ sortie ⛱", token);
+					sendTextMessage(sender,"Salut "+ x +"! Je suis CybExbot, votre annuaire de BOTs sur messenger developpe par CybEx Solutions."+"\n"+"Pour continuer, veuillez taper le nom d'un domaine parmis les suivants:\n 📺 Media 📺 \n 📰 Serviciel 📰 \n ️🎭 Divertissement ️🎭 \n 🛍️ E-commerce 🛍️", token);
 				});
 				continue
 			}
