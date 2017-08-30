@@ -132,7 +132,7 @@ function stockUser(user) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-		var user = new User(body['id'], body['first_name'], body['last_name'], body['profile_pic'], body['locale'], body['timezone'], body['gender'])
+		var user = new User(body['id'], body['first_name'], body['last_name'], body['profile_pic'], body['locale'], body['timezone'], body['gender']);
 		console.dir(body['id'])
 		mongoJS.addUser(user);
     })
