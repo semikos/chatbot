@@ -89,6 +89,10 @@ function postMessages (req, res) {
 				sendHighTechMenu(sender, event, token);
 				continue
 			}
+			else if (text.toUpperCase().indexOf('wtf'.toUpperCase()) !== -1) {
+				sendWTFMenu(sender, event, token);
+				continue
+			}
 			
 			sendApiMessage(sender, event, token)
 		}
@@ -576,6 +580,42 @@ function sendDiversMenu(sender) {
                         "type": "postback",
                         "title": "CHRISTINA MILIAN",
 						"payload": "CHRISTINA MILIAN: BOT qui vous aide a en savoir plus sur la vie de la star."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
+    })
+}
+
+function sendWTFMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "CUCUMBER ADOPTION SERVICE",
+                    "image_url":"https://scontent.ftun1-1.fna.fbcdn.net/v/t1.0-9/17201129_612817522257131_2774642307482657301_n.jpg?oh=370c22173ba3fd8a477dd8e264186644&oe=5A59B7A1",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "CUCUMBER ADOPTION SERVICE",
+						"payload": "CUCUMBER ADOPTION SERVICE: BOT qui vous aide a en savoir plus sur la vie de la star."
                     }],
                 }]
             }
