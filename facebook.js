@@ -10,7 +10,6 @@ const app = express()
 const mongo = require('mongodb').MongoClient;
 const mongoJS = require('./mongo.js');
 const assert = require('assert')
-const schedule = require('node-schedule')
 const classe = require('./User.js');
 
 var url = "mongodb://chatbotcybex:chatbotcybex123@bot-shard-00-00-ccjjw.mongodb.net:27017,bot-shard-00-01-ccjjw.mongodb.net:27017,bot-shard-00-02-ccjjw.mongodb.net:27017/bots?ssl=true&replicaSet=Bot-shard-0&authSource=admin";
@@ -28,25 +27,7 @@ function VerificationToken(req, res) {
 }
 
 function postMessages (req, res) {
-	//Scheduled Messages
-	var rule = new schedule.RecurrenceRule();
-	rule.dayOfWeek = 1;
-	rule.hour = 8;
-	rule.minute = 0;
-	var j = schedule.scheduleJob(rule, function(){
-		var resultArray = [];
-		mongo.connect(url, function(err,db) {
-			assert.equal(null, err);
-			var cursor = db.collection('user-data').find();
-			cursor.forEach(function(err, doc) {
-				//sendTextMessage(doc['id'], "Hello" ,token);
-				console.log(doc+ "  Hello");
-			}, function (){
-				
-			})
-		})
-	});
-	// \\\\\\\\\\\\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\\\\\\\\\\\\ //
+	
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
 		var event = req.body.entry[0].messaging[i]
@@ -202,7 +183,7 @@ function sendMenuMessage(sender) {
 }
 
 //Send message using API.AI
-function sendApiMessage(sender,event) {
+function sendApiMessage(sender, event) {
 	let text = event.message.text 
 	let apiai = apiaiApp.textRequest(text, {
 		sessionId: vtoken // use any arbitrary id
@@ -266,35 +247,6 @@ function facebookDemarre(){
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
 		form:Templates.defaulttemplates["Demarrer"]
-	},
-	function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			console.log(": Updated.");
-			console.log(body);
-		} else {
-			console.log(": Failed. Need to handle errors.");
-			console.log(body);
-		}
-	});
-}
-
-function discussionButtons(sender){	
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: token},
-		method: 'POST',
-		headers: {'Content-Type': 'application/json'},
-		json: {
-			recipient: {id: sender},
-			message: {
-				"quick_replies": [{
-					"content_type":"text",
-					"title":"Red",
-					"payload":"You Selected Red",
-					"image_url":"http://www.colorcombos.com/colors/FF0000"
-				}]
-			}
-		}
 	},
 	function (error, response, body) {
 		if (!error && response.statusCode == 200) {
@@ -640,7 +592,6 @@ function sendWTFMenu(sender) {
 }
 
 module.exports = {
-	discussionButtons:discussionButtons,
 	facebookDemarre:facebookDemarre,
 	facebookMenu:facebookMenu,
 	VerificationToken:VerificationToken,
