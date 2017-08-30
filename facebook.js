@@ -73,6 +73,23 @@ function postMessages (req, res) {
 				sendLifestyleMenu(sender, event, token);
 				continue
 			}
+			else if (text.toUpperCase().indexOf('star'.toUpperCase()) !== -1) {
+				sendDiversMenu(sender, event, token);
+				continue
+			}
+			else if (text.toUpperCase().indexOf('sport'.toUpperCase()) !== -1) {
+				sendSportsMenu(sender, event, token);
+				continue
+			}
+			else if (text.toUpperCase().indexOf('fashion'.toUpperCase()) !== -1) {
+				sendFashionMenu(sender, event, token);
+				continue
+			}
+			else if (text.toUpperCase().indexOf('high tech'.toUpperCase()) !== -1) {
+				sendHighTechMenu(sender, event, token);
+				continue
+			}
+			
 			sendApiMessage(sender, event, token)
 		}
 		if (event.postback) {
@@ -415,6 +432,150 @@ function sendSortiesMenu(sender) {
                         "type": "postback",
                         "title": "SURE",
 						"payload": "SURE: BOT qui classe les meilleurs plans restaurants en fonction du nombre de fois où le lieu a été publié sur Instagram."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
+    })
+}
+
+function sendHighTechMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Sherlock",
+                    "image_url":"https://scontent.ftun1-1.fna.fbcdn.net/v/t1.0-9/16864899_1422499561156758_9045879254871895455_n.png?oh=2f7bf4b343a45b695fa0b370cdabb5fe&oe=5A133C5F",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Sherlock",
+						"payload": "Sherlock: BOT qui parle des actualités sur les starts up ,business et autres."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
+    })
+}
+
+function sendSportsMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "The Score",
+                    "image_url":"https://scontent.ftun1-1.fna.fbcdn.net/v/t1.0-9/19510517_10158117327362037_1023038530803588920_n.png?oh=58abdef3724f8e69a031f3172074bd26&oe=5A1225CD",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "The Score",
+						"payload": "The Score: BOT qui englobe les informations sprotives les résultats de tes equipes favories."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
+    })
+}
+
+function sendFashionMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Burberry",
+                    "image_url":"https://scontent.ftun1-1.fna.fbcdn.net/v/t31.0-8/18193332_10155115670866425_6086112325765518592_o.jpg?oh=12edbca97d1490a7c382ea3f709b33c7&oe=5A57F34E",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Burberry",
+						"payload": "Burberry: BOT qui presente le nouveau modèle DK88, la nouvelle gamme de sacs et leurs articles."
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+		sendTextMessage(sender, "Pour plus d'infos, veuillez taper le nom du bot.", token)
+    })
+}
+
+function sendDiversMenu(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "CHRISTINA MILIAN",
+                    "image_url":"https://scontent.ftun1-1.fna.fbcdn.net/v/t1.0-9/12316195_969064489825529_9067758343727022669_n.jpg?oh=65b02b99fd2eeafd68612637491d4a23&oe=5A60EC66",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "CHRISTINA MILIAN",
+						"payload": "CHRISTINA MILIAN: BOT qui vous aide a en savoir plus sur la vie de la star."
                     }],
                 }]
             }
