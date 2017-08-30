@@ -34,11 +34,7 @@ function postMessages (req, res) {
 		var sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text.toUpperCase() === 'Menu'.toUpperCase() || (text.toUpperCase().indexOf('help'.toUpperCase()) !== -1)) {
-				sendMenuMessage(sender, event, token)
-				continue
-			}
-			else if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
+			if (text.toUpperCase().indexOf('musi'.toUpperCase()) !== -1 ) {
 				sendMusicMenu(sender, event, token);
 				continue
 			}
@@ -139,49 +135,6 @@ function sendTextMessage(sender, text) {
     })
 }
 
-function sendMenuMessage(sender) {
-    let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Adecco France",
-                    "image_url":"https://pbs.twimg.com/media/ClfMG1HWEAAl_EM.jpg",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com/t/adecco.france",
-                        "title": "Acces"
-                    }],
-                }, {
-                    "title": "Drift BOT",
-                    "image_url": "https://i.ytimg.com/vi/AHsspE09SvU/maxresdefault.jpg",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.drift.com",
-                        "title": "Acces"
-                    }],
-                }]
-            }
-        }
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
-
 //Send message using API.AI
 function sendApiMessage(sender,event) {
 	let text = event.message.text 
@@ -247,35 +200,6 @@ function facebookDemarre(){
 		method: 'POST',
 		headers: {'Content-Type': 'application/json'},
 		form:Templates.defaulttemplates["Demarrer"]
-	},
-	function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			console.log(": Updated.");
-			console.log(body);
-		} else {
-			console.log(": Failed. Need to handle errors.");
-			console.log(body);
-		}
-	});
-}
-
-function discussionButtons(sender){	
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token: token},
-		method: 'POST',
-		headers: {'Content-Type': 'application/json'},
-		json: {
-			recipient: {id: sender},
-			message: {
-				"quick_replies": [{
-					"content_type":"text",
-					"title":"Red",
-					"payload":"You Selected Red",
-					"image_url":"http://www.colorcombos.com/colors/FF0000"
-				}]
-			}
-		}
 	},
 	function (error, response, body) {
 		if (!error && response.statusCode == 200) {
@@ -621,7 +545,6 @@ function sendWTFMenu(sender) {
 }
 
 module.exports = {
-	discussionButtons:discussionButtons,
 	facebookDemarre:facebookDemarre,
 	facebookMenu:facebookMenu,
 	VerificationToken:VerificationToken,

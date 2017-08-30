@@ -1,8 +1,6 @@
 'use strict'
 
 let templates = {
-	// Salutation
-
 	"welcome_message":
 	{
 		"recipient":{
