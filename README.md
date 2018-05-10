@@ -1,11 +1,12 @@
-# Project Title
+# I_Deploy_TUN
 
-One Paragraph of project description goes here
 
-## Getting Started
+## Motivation
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
+Are you spending a lot of time in the deployment process of applications?
+Are you keen to automate this process and hence gain a huge amount of time and money?
+I_Deploy_TUN  Tool is the right solution for you.
+It is a solution which combines the strength of a BPM runtime and a software automation tool in order to provide a unique automated deployment experience.
 ### Prerequisites
 
 What things you need to install the software and how to install them
